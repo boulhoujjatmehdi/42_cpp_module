@@ -6,7 +6,7 @@
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 13:37:34 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/06/12 13:11:10 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/06/12 13:19:37 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@ Zombie* zombieHorde( int N, std::string name )
     for (int i = 0; i < N; i++)
     {
         zombieList[i] = Zombie(name);
-    }
-    for (int i = 0; i < N; i++)
-    {
         zombieList[i].announce();
     }
     return zombieList;

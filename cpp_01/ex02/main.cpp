@@ -5,15 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/11 13:34:40 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/06/12 13:15:55 by eboulhou         ###   ########.fr       */
+/*   Created: 2023/06/12 13:26:21 by eboulhou          #+#    #+#             */
+/*   Updated: 2023/06/12 13:47:00 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.h"
+#include <iostream>
+#include <string>
+using std::cout;
+using std::endl;
+using std::printf;
+using std::string;
 
-int main ()
+int main()
 {
-    Zombie *zombies = zombieHorde(5, "mehid");
-    delete[] zombies;
+    string str = "mehdi";
+    string *stringPTR = &str;
+    string &stringREF = str;
+    
+    cout << &str << endl;
+    cout << stringPTR << endl;
+    cout << &stringREF << endl;
+
+    cout << str << endl;
+    cout << *stringPTR << endl;
+    cout << stringREF << endl;
+
 }
