@@ -66,6 +66,8 @@ int main()
 	{
 		cout << "Available Options(ADD - SEARCH - EXIT)\n";
 		getline(cin, str);
+		if(str.empty())
+			return 0;
 		if(!strcmp("EXIT", str.c_str()))
 			exit(0);
 		else if(!strcmp("ADD", str.c_str()))
@@ -74,7 +76,7 @@ int main()
 			if(ct.Index != -1)
 				phonebook.AddContact(ct);
 			else
-				cout << "!!!Veryfy your inputs you have sent one empty!!!" << ct.Index << endl	;
+				cout << "!!!Veryfy your inputs you have sent one empty!!!" << endl	;
 		}
 		else if(!strcmp("SEARCH", str.c_str()))
 		{
