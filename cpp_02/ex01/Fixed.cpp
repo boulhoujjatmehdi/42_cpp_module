@@ -74,9 +74,11 @@ float Fixed::toFloat(void) const
     return (float)this->fixValue / pow2(nbFractBit);
 }
 
+//-----------OPERATORS OVERLOADS-----------------
 std::ostream& operator<< (std::ostream& os, const Fixed& obj)
 {
     os << obj.toFloat();
     (void)obj;
     return os;
 }
+

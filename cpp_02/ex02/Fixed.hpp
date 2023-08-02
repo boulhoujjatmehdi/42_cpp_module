@@ -26,6 +26,27 @@ public:
 
     float toFloat(void) const;
     int toInt(void) const;
+
+    //arithmetic operators
+    float operator+(const Fixed& obj) const;
+    float operator-(const Fixed& obj) const;
+    float operator*(const Fixed& obj) const;
+    float operator/(const Fixed& obj) const;
+    //comparison operators
+    bool operator==(const Fixed& obj) const;
+    bool operator!=(const Fixed& obj) const;
+    bool operator>=(const Fixed& obj) const;
+    bool operator<=(const Fixed& obj) const;
+    bool operator> (const Fixed& obj) const;
+    bool operator< (const Fixed& obj) const;
+    //increment decrement operators
+    float operator++();
+    float operator++(int);
+    float operator--();
+    float operator--(int);
+    //min max operators
+    static float min(const Fixed&obj1, const Fixed&obj2);
+    static float max(const Fixed&obj1, const Fixed&obj2);
 };
 
 std::ostream& operator<< (std::ostream& os, const Fixed& obj);
