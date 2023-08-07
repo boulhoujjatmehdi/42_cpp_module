@@ -4,12 +4,13 @@
 ClapTrap::ClapTrap(string name):HitPoints(10), EnergyPoints(10), AttackDamage(0)
 {
     this->Name = name;
-    cout << "ClapTrap Name constructor called"<< endl;
+    cout << "Name constructor called"<< endl;
 }
 ClapTrap::~ClapTrap()
 {
-    cout << "ClapTrap Destructor called" << endl;
+    cout << "Destructor called" << endl;
 }
+
 
 
 void ClapTrap::attack(const string &target)
@@ -34,7 +35,7 @@ void ClapTrap::beRepaired(int amount)
         
         cout << "ClapTrap "<< Name<< " don't have that amount of energy points to repaire." << endl;
     }
-    else if(HitPoints + amount > 100)
+    else if(HitPoints + amount > 10)
     {
         cout <<"ClapTrap "<<Name<< "you cant heal more than the max" << endl;
     }
