@@ -1,8 +1,8 @@
 
 NAME = progName
 
-SRC = main.cpp ClapTrap.cpp
-HED =  ClapTrap.hpp
+SRC = main.cpp ClapTrap.cpp FragTrap.cpp
+HED =  ClapTrap.hpp FragTrap.hpp
 cc = g++ -std=c++98 -Wall -Werror -Wextra
 
 all: $(NAME)

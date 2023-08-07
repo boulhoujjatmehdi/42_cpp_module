@@ -1,0 +1,19 @@
+
+#include "FragTrap.hpp"
+
+FragTrap::FragTrap(string name): ClapTrap(name)
+{
+    HitPoints = 100;
+    EnergyPoints = 100;
+    AttackDamage = 30;
+    cout <<"FragTrap Constructor called" << endl;
+}
+FragTrap::~FragTrap()
+{
+    cout << "FragTrap Dstructor called" << endl;
+}
+
+void FragTrap::highFivesGuys()
+{
+    cout << "HIGH FIVE GUYS!!!" << endl;
+}

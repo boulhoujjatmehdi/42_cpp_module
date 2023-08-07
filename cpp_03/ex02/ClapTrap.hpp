@@ -10,6 +10,7 @@ using std::string;
 
 class ClapTrap
 {
+protected:
     string Name;
     int HitPoints;
     int EnergyPoints;
@@ -21,6 +22,7 @@ public:
     void beRepaired(int amount);
     ClapTrap(string name);
     ~ClapTrap();
+    void setName(string name);
 };
 
 #endif
