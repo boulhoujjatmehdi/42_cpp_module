@@ -5,7 +5,6 @@
     #include <iostream>
     #include <list>
     #include <cstring>
-    using namespace std;
 
     #include "contact.hpp"
     #include "phonebook.hpp"

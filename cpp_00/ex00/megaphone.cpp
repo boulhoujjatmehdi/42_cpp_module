@@ -5,7 +5,7 @@ int main(int ac, char **av)
 {
     if(ac == 1)
         return 1;
-    
+
     for (int i = 1 ; i < ac ;i++)
     {
         string str = av[i];
@@ -17,3 +17,4 @@ int main(int ac, char **av)
     }
     std::cout << std::endl;
 }
+

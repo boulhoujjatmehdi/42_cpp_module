@@ -1,33 +1,41 @@
 
-#include "header.hpp"
+#include "phonebook.hpp"
 
 Contact add()
 {
 	Contact cont;
 
-		cont.Index = 0;
+		cont.s_Index(0);
 		cout << "FirstName : ";
-		getline(cin, cont.FirstName);
-		if(cont.FirstName.empty())
-			cont.Index = -1;
+		string tmp;
+		getline(cin, tmp);
+		cont.s_FirstName(tmp);
+		if(cont.g_FirstName().empty())
+			cont.s_Index(-1);
 		cout << "LastName : ";
-		getline(cin, cont.LastName);
-		if(cont.LastName.empty())
-			cont.Index = -1;
+		getline(cin, tmp);
+		cont.s_LastName(tmp);
+		if(cont.g_LastName().empty())
+			cont.s_Index(-1);
 		cout << "Nickname : ";
-		getline(cin, cont.Nickname);
-		if(cont.Nickname.empty())
-			cont.Index = -1;
-		cout << "PoneNumber : ";
-		getline(cin, cont.PoneNumber);
-		if(cont.PoneNumber.empty())
-			cont.Index = -1;
+		getline(cin, tmp);
+		cont.s_NickName(tmp);
+		if(cont.g_NickName().empty())
+			cont.s_Index(-1);
+		cout << "PhoneNumber : ";
+		getline(cin, tmp);
+		cont.s_PhoneNumber(tmp);
+		if(cont.g_PhoneNumber().empty())
+			cont.s_Index(-1);
 		cout << "DarkestSecret : ";
-		getline(cin, cont.DarkestSecret);
-		if(cont.DarkestSecret.empty())
-			cont.Index = -1;
+		getline(cin, tmp);
+		cont.s_DarkestSecret(tmp);
+		if(cont.g_DarkestSecret().empty())
+			cont.s_Index(-1);
 	return cont;
 }
+
+
 
 bool containsNonNumeric(string str)
 {
@@ -48,7 +56,7 @@ void search(PhoneBook phonebook)
 	cout << "INDEX :";
 	string str;
 	getline(cin, str);
-	if(str.empty() || containsNonNumeric(str))
+	if(str.empty() || containsNonNumeric(str) || str.length() > 10)
 		return ;
 	int nb = stoi(str);
 	phonebook.SingleContact(nb);
@@ -58,8 +66,7 @@ int main()
 { 
 	PhoneBook phonebook;
 	Contact ct;
-	ct.SetContact("mehdi123456789", "boulhoujjat", "lberzekh", "0631548798465456", "serkil");
-	phonebook.AddContact(ct);
+	// phonebook.AddContact(ct);
 		cout << "PROGRAM STARTED\n\n";
 	string str;
 	while(1)
@@ -73,7 +80,7 @@ int main()
 		else if(!strcmp("ADD", str.c_str()))
 		{
 			ct = add();
-			if(ct.Index != -1)
+			if(ct.g_Index() != -1)
 				phonebook.AddContact(ct);
 			else
 				cout << "!!!Veryfy your inputs you have sent one empty!!!" << endl	;

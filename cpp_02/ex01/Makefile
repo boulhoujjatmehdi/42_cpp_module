@@ -1,8 +1,8 @@
 
 NAME = progName
 
-SRC = main.cpp contact.cpp phonebook.cpp
-HED = header.hpp phonebook.hpp contact.hpp 
+SRC = main.cpp Fixed.cpp
+HED =  Fixed.hpp
 cc = g++ -std=c++98 -Wall -Werror -Wextra
 
 all: $(NAME)
