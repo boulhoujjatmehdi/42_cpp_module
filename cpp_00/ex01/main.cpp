@@ -57,7 +57,10 @@ void search(PhoneBook phonebook)
 	string str;
 	getline(cin, str);
 	if(str.empty() || containsNonNumeric(str) || str.length() > 10)
+	{
+		cout << "FAILED SEARCH!!!!" << endl;
 		return ;
+	}
 	int nb = stoi(str);
 	phonebook.SingleContact(nb);
 }
@@ -66,12 +69,12 @@ int main()
 { 
 	PhoneBook phonebook;
 	Contact ct;
-	// phonebook.AddContact(ct);
-		cout << "PROGRAM STARTED\n\n";
+		cout << "PHONEBOOK STARTED\n\n";
 	string str;
 	while(1)
 	{
-		cout << "Available Options(ADD - SEARCH - EXIT)\n";
+
+		cout << "Available Options(ADD - SEARCH - EXIT)\n\n";
 		getline(cin, str);
 		if(str.empty())
 			return 0;
@@ -83,7 +86,7 @@ int main()
 			if(ct.g_Index() != -1)
 				phonebook.AddContact(ct);
 			else
-				cout << "!!!Veryfy your inputs you have sent one empty!!!" << endl	;
+				cout << "!!!Veryfy your inputs you have sent ONE or MANY empty fields!!!" << endl	;
 		}
 		else if(!strcmp("SEARCH", str.c_str()))
 		{
