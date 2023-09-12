@@ -1,4 +1,4 @@
-NAME = Zombie
+NAME = progName
 
 SRC = main.cpp Zombie.cpp zombieHorde.cpp 
 HED = Zombie.hpp Zombie.h

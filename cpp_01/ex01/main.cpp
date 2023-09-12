@@ -6,7 +6,7 @@
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 13:34:40 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/06/12 13:15:55 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/09/12 17:36:19 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 
 int main ()
 {
-    Zombie *zombies = zombieHorde(5, "mehid");
+    Zombie *zombies = zombieHorde(10, "mehdi ");
+
+    for (int i = 0; i < 10; i++)
+    {
+        zombies[i].announce();
+    }
     delete[] zombies;
+
+    system("leaks progName");
 }
