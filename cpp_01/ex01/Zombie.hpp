@@ -6,7 +6,7 @@
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 18:57:21 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/06/11 14:20:54 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/09/12 20:33:19 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define ZOMBIE_HPP
 # include <iostream>
 
-using namespace std;
+using std::cout;
+using std::endl;
+using std::string;
 
 class Zombie
 {

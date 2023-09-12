@@ -5,7 +5,11 @@
 #include <cstdlib>
 
 #include <string>
-using namespace std;
+using std::string;
+using std::ifstream;
+using std::ofstream;
+using std::endl;
+using std::cerr;
 
 int main(int ac, char **av)
 {
@@ -15,25 +19,28 @@ int main(int ac, char **av)
         if(!inf.is_open())
         {
             cerr << "file not found"<< endl;
-            exit(1);
+            exit(127);
         }
         string str;
         string name(av[1]);
         ofstream outFile((name + ".replace"));
         if(!outFile.is_open())
-            return 1;
+        {
+            cerr << ".replace file not created";
+            exit(1);
+        }
 
         getline(inf, str, '\0');
-            for (int i = 0; (unsigned long)i < str.length() ; i++)
+        for (unsigned int i = 0; i < str.length() ; i++)
+        {
+            if(!strncmp(&str[i], av[2], strlen(av[2]))&& av[2][0])
             {
-                if(!strncmp(&str[i], av[2], strlen(av[2]))&& av[2][0])
-                {
-                    outFile << av[3];
-                    i+= strlen(av[2])-1;
-                }
-                else
-                    outFile << str[i];
+                outFile << av[3];
+                i+= strlen(av[2])-1;
             }
+            else
+                outFile << str[i];
+        }
         return 0;
     }
     return 1;
