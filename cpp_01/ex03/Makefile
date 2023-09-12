@@ -1,20 +1,11 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/06/12 15:00:38 by eboulhou          #+#    #+#              #
-#    Updated: 2023/06/12 15:28:43 by eboulhou         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = progName
 
-SRC = Weapon.cpp main.cpp HumanA.cpp HumanB.cpp
-HED =  Weapon.hpp HumanA.hpp HumanB.hpp
-cc = g++ -std=c++98 -Wall -Werror -Wextra
+SRC = main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
+HED = HumanA.hpp Weapon.hpp HumanB.hpp
+cc = g++ \
+-Wall -Werror -Wextra\
+-std=c++98 \
+# -g -fsanitize=address
 
 all: $(NAME)
 

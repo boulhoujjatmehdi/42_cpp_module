@@ -6,7 +6,7 @@
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 13:26:21 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/06/12 13:47:00 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/09/12 17:55:57 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ using std::string;
 
 int main()
 {
-    string str = "mehdi";
+    string str = "HI THIS IS BRAIN";
     string *stringPTR = &str;
     string &stringREF = str;
-    
+
     cout << &str << endl;
     cout << stringPTR << endl;
     cout << &stringREF << endl;
@@ -30,5 +30,5 @@ int main()
     cout << str << endl;
     cout << *stringPTR << endl;
     cout << stringREF << endl;
-
+    
 }
