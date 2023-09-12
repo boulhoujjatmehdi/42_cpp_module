@@ -6,7 +6,7 @@
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 19:01:50 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/06/10 20:27:11 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/09/12 16:23:42 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@ Zombie::Zombie(string name)
     Name = name;
 }
 
+Zombie::Zombie()
+{
+    
+}
 Zombie::~Zombie()
 {
     cout << Name << " destroyed"<< endl;
