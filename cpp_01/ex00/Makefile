@@ -2,7 +2,7 @@ NAME = progName
 
 SRC = main.cpp Zombie.cpp randomChump.cpp newZombie.cpp 
 HED = Zombie.hpp Zombie.h
-cc = g++ -std=c++98 -Wall -Werror -Wextra
+cc = c++ -std=c++98 -Wall -Werror -Wextra
 
 all: $(NAME)
 

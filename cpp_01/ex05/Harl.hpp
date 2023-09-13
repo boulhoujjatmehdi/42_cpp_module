@@ -6,7 +6,7 @@
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 16:36:54 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/06/17 20:19:45 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/09/13 12:40:04 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@
 #include <iostream>
 #include <map>
 
-using namespace std;
+using std::cout;
+using std::endl;
+using std::string;
+
 class Harl
 {
     void debug(void);

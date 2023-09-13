@@ -6,7 +6,7 @@
 #    By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/12 15:00:38 by eboulhou          #+#    #+#              #
-#    Updated: 2023/09/12 21:05:21 by eboulhou         ###   ########.fr        #
+#    Updated: 2023/09/13 13:04:07 by eboulhou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = progName
 
 SRC = main.cpp
 HED = 
-cc = g++ -std=c++98 -Wall -Werror -Wextra
+cc = c++ -std=c++98 -Wall -Werror -Wextra
 
 all: $(NAME)
 

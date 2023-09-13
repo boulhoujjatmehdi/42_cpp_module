@@ -2,7 +2,7 @@ NAME = progName
 
 SRC = main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
 HED = HumanA.hpp Weapon.hpp HumanB.hpp
-cc = g++ \
+cc = c++ \
 -Wall -Werror -Wextra\
 -std=c++98 \
 # -g -fsanitize=address

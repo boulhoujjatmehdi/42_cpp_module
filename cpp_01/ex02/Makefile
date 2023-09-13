@@ -1,7 +1,7 @@
 NAME = brain
 
 SRC = main.cpp
-cc = g++ \
+cc = c++ \
 -Wall -Werror -Wextra\
 -std=c++98 \
 # -g -fsanitize=address

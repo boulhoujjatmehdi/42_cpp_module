@@ -2,7 +2,7 @@ NAME = progName
 
 SRC = main.cpp Zombie.cpp zombieHorde.cpp 
 HED = Zombie.hpp Zombie.h
-cc = g++ \
+cc = c++ \
 -Wall -Werror -Wextra\
 -std=c++98 \
 # -g -fsanitize=address
