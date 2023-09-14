@@ -5,6 +5,8 @@
 #include <cstdlib>
 
 #include <string>
+#include <cstring>
+
 using std::string;
 using std::ifstream;
 using std::ofstream;
@@ -23,7 +25,8 @@ int main(int ac, char **av)
         }
         string str;
         string name(av[1]);
-        ofstream outFile((name + ".replace"));
+        string st = name + ".replace";
+        ofstream outFile(st.c_str());
         if(!outFile.is_open())
         {
             cerr << ".replace file not created";
