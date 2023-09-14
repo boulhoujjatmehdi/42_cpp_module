@@ -1,7 +1,7 @@
 NAME = progName
 
-SRC = main.cpp Zombie.cpp zombieHorde.cpp 
-HED = Zombie.hpp Zombie.h
+SRC = main.cpp Zombie.cpp
+HED = Zombie.hpp 
 cc = c++ \
 -Wall -Werror -Wextra\
 -std=c++98 \

@@ -29,7 +29,7 @@ int main(int ac, char **av)
         ofstream outFile(st.c_str());
         if(!outFile.is_open())
         {
-            cerr << ".replace file not created";
+            cerr << ".replace not created or permition denied!!!";
             exit(1);
         }
 

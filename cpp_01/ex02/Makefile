@@ -1,4 +1,4 @@
-NAME = brain
+NAME = progName
 
 SRC = main.cpp
 cc = c++ \

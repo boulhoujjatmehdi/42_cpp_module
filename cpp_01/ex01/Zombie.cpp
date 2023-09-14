@@ -1,16 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/10 19:01:50 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/06/12 13:23:09 by eboulhou         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
-#include "Zombie.h"
+#include "Zombie.hpp"
 
 Zombie::Zombie(string name)
 {
@@ -28,3 +17,4 @@ void Zombie::announce(void)
 {
     cout << Name << " BraiiiiiiinnnzzzZ..." << endl;
 }
+
