@@ -16,17 +16,66 @@ void Harl::error( void ){
     cout << "This is unacceptable! I want to speak to the manager now."<< endl;
 }
 
-void Harl::complain(string level){
+void Harl::complain(string level) {
+    typedef void (Harl::*PMF)();
 
-    std::map<std::string, void(Harl::*)()> myMap;
+    PMF fns[4] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 
-    myMap["DEBUG"] = &Harl::debug;
-    myMap["INFO"] = &Harl::info;
-    myMap["WARNING"] = &Harl::warning;
-    myMap["ERROR"] = &Harl::error;
+    string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
     Harl obj;
-    if(!(myMap.find(level) == myMap.end()))
-        (obj.*(myMap[level]))();
 
+    for(int i = 0; i < 4; i++)
+    {
+        if(levels[i] == level)
+        {
+            (obj.*(fns[i]))();
+            return ;
+        }
+    }
+    cout << "Unknown level: " << level << endl;
 }
+
+// void Harl::complain(string level){
+
+//     std::map<std::string, void(Harl::*)()> myMap;
+
+//     typedef void (Harl::*PMF)();
+//     PMF lst[3];
+
+//     lst[0] = &Harl::debug;
+
+//     Harl oo;
+    
+
+//     myMap["DEBUG"] = &Harl::debug;
+//     myMap["INFO"] = &Harl::info;
+//     myMap["WARNING"] = &Harl::warning;
+//     myMap["ERROR"] = &Harl::error;
+
+//     Harl obj;
+//     if(!(myMap.find(level) == myMap.end()))
+//         (obj.*(myMap[level]))();
+
+// }
+// void Harl::complain(string level){
+
+//     std::map<std::string, void(Harl::*)()> myMap;
+
+//     typedef void (Harl::*PMF)();
+//     PMF lst[3];
+
+//     lst[0] = &Harl::debug;
+
+//     this->*lst[0];
+
+//     // myMap["DEBUG"] = &Harl::debug;
+//     // myMap["INFO"] = &Harl::info;
+//     // myMap["WARNING"] = &Harl::warning;
+//     // myMap["ERROR"] = &Harl::error;
+
+//     // Harl obj;
+//     // if(!(myMap.find(level) == myMap.end()))
+//     //     (obj.*(myMap[level]))();
+
+// }

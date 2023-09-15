@@ -14,8 +14,9 @@ class Weapon
     string type;
 
     public:
-    Weapon(string type):type(type){};
-    Weapon(){};
+    Weapon(string type);
+    Weapon();
+    ~Weapon();
     string gettype();
     void setType(string tpe);
     
