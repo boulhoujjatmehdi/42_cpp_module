@@ -1,21 +1,19 @@
 #include <iostream>
 #include <string>
-using std::cout;
-using std::endl;
-using std::string;
+
 
 int main()
 {
-    string str = "HI THIS IS BRAIN";
-    string *stringPTR = &str;
-    string &stringREF = str;
+    std::string str = "HI THIS IS BRAIN";
+    std::string *stringPTR = &str;
+    std::string &stringREF = str;
 
-    cout << &str << endl;
-    cout << stringPTR << endl;
-    cout << &stringREF << endl;
+    std::cout << &str << std::endl;
+    std::cout << stringPTR << std::endl;
+    std::cout << &stringREF << std::endl;
 
-    cout << str << endl;
-    cout << *stringPTR << endl;
-    cout << stringREF << endl;
+    std::cout << str << std::endl;
+    std::cout << *stringPTR << std::endl;
+    std::cout << stringREF << std::endl;
     
 }

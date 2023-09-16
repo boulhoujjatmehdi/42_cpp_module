@@ -7,6 +7,8 @@ int main()
     obj.complain("INFO");
     obj.complain("WARNING");
     obj.complain("ERROR");
+    obj.complain("");
+
 
     return 0;
 }

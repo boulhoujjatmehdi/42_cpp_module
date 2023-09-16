@@ -15,7 +15,7 @@ using std::cerr;
 
 int main(int ac, char **av)
 {
-    if(ac == 4 && av[1][0])
+    if(ac == 4)
     {
         ifstream inf(av[1]);
         if(!inf.is_open())

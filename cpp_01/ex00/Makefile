@@ -1,6 +1,6 @@
 NAME = progName
 
-SRC = main.cpp Zombie.cpp 
+SRC = main.cpp Zombie.cpp newZombie.cpp randomChamp.cpp
 HED = Zombie.hpp 
 cc = c++ -std=c++98 -Wall -Werror -Wextra
 
