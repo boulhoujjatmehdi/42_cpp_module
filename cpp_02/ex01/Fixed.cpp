@@ -1,8 +1,7 @@
 
 #include "Fixed.hpp"
 #include <iostream>
-#include <cmath>
-#include <cstdlib>
+#include <math.h>
 
 int pow2(int pow)
 {
@@ -23,8 +22,8 @@ Fixed::Fixed(){
 
 Fixed::Fixed(const Fixed& f)
 {
-    cout << "Copy constructor called" << endl;
     *this = f;
+    cout << "Copy constructor called" << endl;
     return ;
 }
 
@@ -56,10 +55,12 @@ Fixed::Fixed(int val)
     this->fixValue = val * pow2(this->nbFractBit);
     return ;
 }
+
 Fixed::Fixed(float val)
 {
     cout << "Float constructor called" << endl;
     this->fixValue = roundf(val * pow2(this->nbFractBit));
+
     return ;
 }
 

@@ -6,13 +6,14 @@
 class Fixed
 {
     int fixValue;
-    static const int nbFractBit;
+    static const int nbFractBit = 8;
 
 public:
     Fixed(Fixed &copy);
     Fixed(void);
+    void operator= (Fixed op);
     ~Fixed(void);
-    void operator = (Fixed op);
+
     int getRawBits(void);
     void setRawBits(int val);
 };

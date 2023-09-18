@@ -5,8 +5,6 @@
 using std::cout;
 using std::endl;
 
-const int Fixed::nbFractBit = 0 ;
-
 Fixed::Fixed(){
     this->fixValue = 0;
     cout << "Default constructor called" << endl;
@@ -24,8 +22,8 @@ Fixed::~Fixed()
 }
 
 void Fixed::operator=(Fixed op){
-    cout << "Assignation operator called" << endl;
     this->fixValue = op.getRawBits();
+    cout << "Assignation operator called" << endl;
 }
 
 int Fixed::getRawBits(){

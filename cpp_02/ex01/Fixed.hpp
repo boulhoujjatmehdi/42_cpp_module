@@ -14,21 +14,28 @@ class Fixed
     static const int nbFractBit  = 8;
 
 public:
+
+    //orthodox//
     Fixed(const Fixed& copy);
     Fixed(void);
     ~Fixed(void);
     Fixed& operator = (const Fixed& op);
-    int getRawBits(void) const;
-    void setRawBits(int val);
 
-    Fixed(int);
-    Fixed(float);
+    //setter&getter
+    int     getRawBits(void) const;
+    void    setRawBits(int val);
+    
+    //constructors
+    Fixed(const int val);
+    Fixed(const float val);
 
-    float toFloat(void) const;
-    int toInt(void) const;
+    //totype
+    float   toFloat(void) const;
+    int     toInt(void) const;
 
 
 };
 
 std::ostream& operator<< (std::ostream& os, const Fixed& obj);
 #endif
+
