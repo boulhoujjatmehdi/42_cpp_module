@@ -2,10 +2,7 @@
 
 #include <iostream>
 #include <fstream>
-#include <cstdlib>
 
-#include <string>
-#include <cstring>
 
 using std::string;
 using std::ifstream;
