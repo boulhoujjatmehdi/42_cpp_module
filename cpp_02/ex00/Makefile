@@ -3,7 +3,7 @@ NAME = progName
 
 SRC = main.cpp Fixed.cpp
 HED =  Fixed.hpp
-cc = g++ -std=c++98 -Wall -Werror -Wextra
+cc = c++ -std=c++98 -Wall -Werror -Wextra
 
 all: $(NAME)
 

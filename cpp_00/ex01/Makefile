@@ -3,7 +3,7 @@ NAME = progName
 
 SRC = main.cpp contact.cpp phonebook.cpp
 HED = header.hpp phonebook.hpp contact.hpp 
-cc = g++ -std=c++98 -Wall -Werror -Wextra
+cc = c++ -std=c++98 -Wall -Werror -Wextra
 
 all: $(NAME)
 

@@ -14,10 +14,12 @@ class Fixed
     static const int nbFractBit  = 8;
 
 public:
-    Fixed(const Fixed& copy);
-    Fixed(void);
-    ~Fixed(void);
-    Fixed& operator = (const Fixed& op);
+    //ORTHODOX
+    Fixed(const Fixed& copy); //CONSTRUTOR
+    Fixed(void); //DEFAULT
+    ~Fixed(void); //DESTRUCTOR
+    Fixed& operator = (const Fixed& op); //COPY OVERLOAD
+
     int getRawBits(void) const;
     void setRawBits(int val);
 

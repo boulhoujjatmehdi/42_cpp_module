@@ -15,15 +15,15 @@ int pow2(int pow)
 }
 
 Fixed::Fixed(){
-    this->fixValue = 0;
     cout << "Default constructor called" << endl;
+    this->fixValue = 0;
     return ;
 }
 
 Fixed::Fixed(const Fixed& f)
 {
-    *this = f;
     cout << "Copy constructor called" << endl;
+    *this = f;
     return ;
 }
 
@@ -34,7 +34,7 @@ Fixed::~Fixed()
 
 Fixed& Fixed::operator=(const Fixed& op)
 {
-    cout << "Assignation operator called" << endl;
+    cout << "Copy assignment operator called" << endl;
     this->fixValue = op.fixValue;
     return *this;
 }

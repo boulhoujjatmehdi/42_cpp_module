@@ -2,7 +2,7 @@
 #include "Fixed.hpp"
 #include <iostream>
 #include <cmath>
-#include <cstdlib> //FIXME: check this file.....-_-
+#include <cstdlib>
 
 int pow2(int pow)
 {
@@ -17,8 +17,8 @@ int pow2(int pow)
 
 //constructors
 Fixed::Fixed(){
-    this->fixValue = 0;
-    // cout << "Default constructor called" << endl;
+        this->fixValue = 0;
+        // cout << "Default constructor called" << endl;
     return ;
 }
 
@@ -70,8 +70,7 @@ float Fixed::toFloat(void) const
 
 std::ostream& operator<< (std::ostream& os, const Fixed& obj)
 {
-    os << obj.toFloat();
-    (void)obj;
+    os << obj.toFloat() ;
     return os;
 }
 Fixed& Fixed::operator=(const Fixed& op)
@@ -127,13 +126,13 @@ bool Fixed::operator< (const Fixed& obj) const
 
 float Fixed::operator++()
 {
-    this->fixValue++;
-    return this->toFloat();
+    (*this).fixValue ++;
+    return toFloat();
 }
 float Fixed::operator++(int)
 {
-    float tmp = this->toFloat();
-    this->fixValue++;
+    float tmp = toFloat();
+    fixValue++;
     return tmp;
 }
 float Fixed::operator--()

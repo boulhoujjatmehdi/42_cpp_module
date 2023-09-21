@@ -2,8 +2,7 @@
 #include "Fixed.hpp"
 #include <iostream>
 
-using std::cout;
-using std::endl;
+
 
 Fixed::Fixed(){
     this->fixValue = 0;
@@ -21,9 +20,9 @@ Fixed::~Fixed()
     cout << "Destructor called" << endl;
 }
 
-void Fixed::operator=(Fixed op){
+void Fixed::operator=(Fixed &op){
+    cout << "Copy assignment operator called" << endl;
     this->fixValue = op.getRawBits();
-    cout << "Assignation operator called" << endl;
 }
 
 int Fixed::getRawBits(){
