@@ -3,7 +3,7 @@
 #ifndef FIXED_HPP
 #define FIXED_HPP
 #include <iostream>
-#include <limits>
+#include <math.h>
 
 using std::cout;
 using std::endl;

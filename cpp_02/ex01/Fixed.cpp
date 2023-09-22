@@ -1,7 +1,6 @@
 
 #include "Fixed.hpp"
-#include <iostream>
-#include <math.h>
+
 
 int pow2(int pow)
 {
