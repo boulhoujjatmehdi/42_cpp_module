@@ -14,8 +14,14 @@
 class ScavTrap :public ClapTrap
 {
 public:
-    ScavTrap(string name);
+    //ORTHODOX
+    ScavTrap();
+    ScavTrap(ScavTrap& obj);
+    ScavTrap& operator=(ScavTrap& obj);
     ~ScavTrap();
+
+
+    ScavTrap(string name);
     void attack(const string &target);
     void guardGate();
 };

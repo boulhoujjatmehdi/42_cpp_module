@@ -20,9 +20,10 @@ Fixed::~Fixed()
     cout << "Destructor called" << endl;
 }
 
-void Fixed::operator=(Fixed &op){
+Fixed& Fixed::operator=(Fixed &op){
     cout << "Copy assignment operator called" << endl;
     this->fixValue = op.getRawBits();
+    return *this;
 }
 
 int Fixed::getRawBits(){

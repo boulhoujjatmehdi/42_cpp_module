@@ -2,7 +2,7 @@
 
 #ifndef FIXED_HPP
 #define FIXED_HPP
-
+#include <iostream>
 using std::cout;
 using std::endl;
 
@@ -14,7 +14,7 @@ class Fixed
 public:
     Fixed(Fixed &copy);
     Fixed(void);
-    void operator= (Fixed &op);
+    Fixed& operator= (Fixed &op);
     ~Fixed(void);
 
     int getRawBits(void);

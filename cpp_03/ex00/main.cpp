@@ -2,10 +2,8 @@
 
 int main ()
 {
-    ClapTrap cl4ptp = ClapTrap("mehdi");
+    ClapTrap cl4ptp("mehdi");
 
-
-	cl4ptp.attack("Handsome Jack");
 	cl4ptp.takeDamage(6);
 	cl4ptp.beRepaired(4);
 	cl4ptp.takeDamage(3);

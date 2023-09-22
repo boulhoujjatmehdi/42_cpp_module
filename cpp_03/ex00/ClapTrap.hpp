@@ -16,11 +16,18 @@ class ClapTrap
     int AttackDamage;
 
 public:
+    //TODO: ORTHODODX
+    ClapTrap();
+    ClapTrap(ClapTrap &obj);
+    ClapTrap& operator=(ClapTrap &obj);
+    ~ClapTrap();
+
+    
+    ClapTrap(string name);
     void attack(const string &target);
     void takeDamage(int amount);
     void beRepaired(int amount);
-    ClapTrap(string name);
-    ~ClapTrap();
+    
 };
 
 #endif

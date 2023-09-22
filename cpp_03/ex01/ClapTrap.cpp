@@ -6,9 +6,28 @@ ClapTrap::ClapTrap(string name):HitPoints(10), EnergyPoints(10), AttackDamage(0)
     this->Name = name;
     cout << "ClapTrap Name constructor called"<< endl;
 }
+
+//ORTHODOX
+ClapTrap::ClapTrap(ClapTrap& obj)
+{
+    *this = obj;
+}
+ClapTrap::ClapTrap()
+{
+    this->Name = "";
+}
 ClapTrap::~ClapTrap()
 {
     cout << "ClapTrap Destructor called" << endl;
+}
+ClapTrap& ClapTrap::operator=(ClapTrap& obj)
+{
+    cout << "Copy assignement operator called"<< endl;
+    this->Name = obj.Name;
+    this->HitPoints = obj.HitPoints;
+    this->EnergyPoints = obj.EnergyPoints;
+    this->AttackDamage = obj.AttackDamage;
+    return *this;
 }
 
 

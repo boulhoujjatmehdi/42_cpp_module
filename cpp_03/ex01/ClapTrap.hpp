@@ -17,11 +17,17 @@ protected:
     int AttackDamage;
 
 public:
+    ClapTrap(string name);
+    //ORTHODOX
+    ClapTrap(ClapTrap &obj);
+    ClapTrap();
+    ClapTrap& operator=(ClapTrap &obj);
+    ~ClapTrap();
+
+
     void attack(const string &target);
     void takeDamage(int amount);
     void beRepaired(int amount);
-    ClapTrap(string name);
-    ~ClapTrap();
     void setName(string name);
 };
 
