@@ -43,6 +43,9 @@ cout << hayawan->get_idea(0)<< endl;
 cout << hayawan->get_idea(1)<< endl;
 
 cout << "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n"<< endl;
-return 0;
+//unComment this code bellow
+// Animal *anim = new Animal();;
+// anim.makeSound;
+// return 0;
 }
 

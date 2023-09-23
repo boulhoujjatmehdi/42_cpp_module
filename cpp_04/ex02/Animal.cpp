@@ -19,10 +19,10 @@ Animal& Animal::operator=(Animal& obj)
 }
 //----------ORTHODOX------------
 
-void Animal::makeSound()const
-{
-    cout << "Animal: Animal sound" << endl;
-}
+// void Animal::makeSound()const;
+// {
+//     cout << "Animal: Animal sound" << endl;
+// }
 
 string Animal::getType()const
 {

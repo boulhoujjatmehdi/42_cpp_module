@@ -43,6 +43,8 @@ cout << hayawan->get_idea(0)<< endl;
 cout << hayawan->get_idea(1)<< endl;
 
 cout << "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n"<< endl;
+Animal *ll = new Animal();
+ll->makeSound();
 return 0;
 }
 

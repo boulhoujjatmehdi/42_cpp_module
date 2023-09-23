@@ -18,7 +18,7 @@ public:
     Animal& operator=(Animal& obj);
     //----ORTHODOX----
 
-    virtual void makeSound()const;
+    virtual void makeSound()const = 0;
 
     string getType()const;
     void setType(string type);
