@@ -1,5 +1,5 @@
-#ifndef ICE_HPP
-#define ICE_HPP
+#ifndef CURE_HPP
+#define CURE_HPP
 
 #include <iostream>
 #include "AMateria.hpp"
@@ -7,19 +7,19 @@ using std::cout;
 using std::endl;
 using std::string;
 
-class Ice:public AMateria
+class Cure:public AMateria
 {
 protected:
     string type;
 public:
 //---------ORTHODOX---------------
-Ice();
-Ice(Ice& obj);
-Ice& operator=(Ice& obj);
-~Ice();
+Cure();
+Cure(Cure& obj);
+Cure& operator=(Cure& obj);
+~Cure();
 //---------ORTHODOX---------------
 
-virtual Ice* clone() const;
+virtual Cure* clone() const;
 virtual void use(ICharacter& target);
 };
 

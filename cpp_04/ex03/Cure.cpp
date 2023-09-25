@@ -1,35 +1,35 @@
-#include "Ice.hpp"
+#include "Cure.hpp"
 //---------ORTHODOX---------------
 
-Ice::Ice()
+Cure::Cure()
 {
     cout << "Materia: Default Constructor Called"<< endl;
-    this->type = "ice";
+    this->type = "Cure";
 }
-Ice::Ice(Ice& obj)
+Cure::Cure(Cure& obj)
 {
     cout << "Materia: Copy Constructor Called"<< endl;
     this->type = obj.type;
 }
-Ice& Ice::operator=(Ice& obj)
+Cure& Cure::operator=(Cure& obj)
 {
     cout << "Materia: Copy Assignement overload Called"<< endl;
     *this = obj;
     return *this;
 }
-Ice::~Ice()
+Cure::~Cure()
 {
     cout << "Materia: Copy Constructor Called"<< endl;
 }
 //---------ORTHODOX---------------
 
-Ice* Ice::clone()const
+Cure* Cure::clone()const
 {
-    Ice* ice  = new Ice();
-    return ice;
+    Cure* cure  = new Cure();
+    return cure;
 }
 
-void Ice::use(ICharacter& target)
+void Cure::use(ICharacter& target)
 {
-    cout << "* shoots an ice bolt at "<<target.getName()<<" *"<< endl;
+    cout << "* heals "<<target.getName()<<"’s wounds *"<< endl;
 }
