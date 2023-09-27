@@ -12,22 +12,23 @@ class ClapTrap
 {
 protected:
     string Name;
-    int HitPoints;
-    int EnergyPoints;
-    int AttackDamage;
+    unsigned int HitPoints;
+    unsigned int EnergyPoints;
+    unsigned int AttackDamage;
 
 public:
-    ClapTrap(string name);
     //ORTHODOX
     ClapTrap(ClapTrap &obj);
     ClapTrap();
     ClapTrap& operator=(ClapTrap &obj);
     ~ClapTrap();
+    //ORTHODOX
 
+    ClapTrap(string name);
 
     void attack(const string &target);
-    void takeDamage(int amount);
-    void beRepaired(int amount);
+    void takeDamage(unsigned int amount);
+    void beRepaired(unsigned int amount);
     void setName(string name);
 };
 

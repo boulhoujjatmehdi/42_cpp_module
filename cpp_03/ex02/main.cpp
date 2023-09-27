@@ -3,7 +3,7 @@
 int main ()
 {
     
-	FragTrap cl4ptp("mehdiboulhoujjat");
+	FragTrap cl4ptp("mehdi");
 
 	// scav.attack(2);
 

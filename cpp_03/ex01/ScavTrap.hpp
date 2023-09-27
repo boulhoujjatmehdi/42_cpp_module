@@ -1,11 +1,4 @@
 
-
-
-
-
-
-
-
 #ifndef SCAVTRAP_HPP
 # define SCAVTRAP_HPP
 
@@ -19,6 +12,7 @@ public:
     ScavTrap(ScavTrap& obj);
     ScavTrap& operator=(ScavTrap& obj);
     ~ScavTrap();
+    //ORTHODOX
 
 
     ScavTrap(string name);

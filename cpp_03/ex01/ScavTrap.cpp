@@ -5,6 +5,10 @@
 
 ScavTrap::ScavTrap()
 {
+    Name = "";
+    HitPoints = 100;
+    EnergyPoints = 50;
+    AttackDamage = 20;
     cout << "Defualt constructor called" << endl;
 }
 ScavTrap& ScavTrap::operator=(ScavTrap& obj)

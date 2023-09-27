@@ -14,6 +14,7 @@
 class FragTrap :public ClapTrap
 {
 public:
+    FragTrap();
     FragTrap(string name);
     ~FragTrap();
     void highFivesGuys();
