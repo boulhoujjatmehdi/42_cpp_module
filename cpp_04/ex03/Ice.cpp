@@ -3,23 +3,23 @@
 
 Ice::Ice()
 {
-    cout << "Materia: Default Constructor Called"<< endl;
+    cout << "ICE:           Default Constructor Called"<< endl;
     this->type = "ice";
 }
 Ice::Ice(Ice& obj)
 {
-    cout << "Materia: Copy Constructor Called"<< endl;
+    cout << "ICE:           Copy Constructor Called"<< endl;
     this->type = obj.type;
 }
 Ice& Ice::operator=(Ice& obj)
 {
-    cout << "Materia: Copy Assignement overload Called"<< endl;
+    cout << "ICE:           Copy Assignement overload Called"<< endl;
     this->type = obj.type;
     return *this;
 }
 Ice::~Ice()
 {
-    cout << "Materia: Copy Constructor Called"<< endl;
+    cout << "ICE:           Copy Constructor Called"<< endl;
 }
 //---------ORTHODOX---------------
 

@@ -2,7 +2,7 @@
 #define CHARACTER_HPP
 
 #include <iostream>
-#include "AMateria.hpp"
+
 #include "ICharacter.hpp"
 
 using std::cout;
@@ -15,10 +15,13 @@ class Character : public ICharacter
     AMateria *inventory[4];
     unsigned int       inv_stat;
 public:
-~Character();
-
-Character(string name);
-
+//----------------
+    ~Character();
+    Character(string name);
+    Character();
+    Character(const Character &obj);
+    Character& operator=(const Character& obj);
+//-----------------
 std::string const & getName() const;
 void equip(AMateria* m);
 void unequip(int idx);

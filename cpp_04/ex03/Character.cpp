@@ -2,12 +2,31 @@
 
 
 //---------ORTHODOX-----------
+Character::Character()
+{
+    this->Name = "undifined name";
+}
 Character::~Character()
 {
     for(unsigned int i = 0; i < inv_stat; i++)
     {
         delete inventory[i];
     }
+}
+Character::Character(const Character& obj)
+{
+    *this = obj;
+}
+
+Character& Character::operator=(const Character& obj)
+{
+    this->Name = obj.Name;
+    this->inv_stat = obj.inv_stat;
+    for(unsigned int i = 0; i < inv_stat;i++)
+    {
+        inventory[i] = obj.inventory[i];
+    }
+    return *this; 
 }
 //---------ORTHODOX-----------
 
@@ -48,7 +67,9 @@ void Character::unequip(int idx)
 
 void Character::use(int idx, ICharacter& target)
 { 
+    cout << "before---------------- idx="<< idx << endl;
     inventory[idx]->use(target);
+    cout << "after ----------------"<< endl;
 }
 
 //constructor with name
