@@ -9,13 +9,13 @@ using std::cout;
 using std::endl;
 using std::string;
 
-class Character
+class Character : public ICharacter
 {
     string Name;
     AMateria *inventory[4];
     unsigned int       inv_stat;
 public:
-// ~Character() {}
+~Character();
 
 Character(string name);
 

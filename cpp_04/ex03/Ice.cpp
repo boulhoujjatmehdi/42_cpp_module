@@ -14,7 +14,7 @@ Ice::Ice(Ice& obj)
 Ice& Ice::operator=(Ice& obj)
 {
     cout << "Materia: Copy Assignement overload Called"<< endl;
-    *this = obj;
+    this->type = obj.type;
     return *this;
 }
 Ice::~Ice()

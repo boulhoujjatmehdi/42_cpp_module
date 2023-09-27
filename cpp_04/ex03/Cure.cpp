@@ -14,7 +14,7 @@ Cure::Cure(Cure& obj)
 Cure& Cure::operator=(Cure& obj)
 {
     cout << "Materia: Copy Assignement overload Called"<< endl;
-    *this = obj;
+    this->type = obj.type;
     return *this;
 }
 Cure::~Cure()

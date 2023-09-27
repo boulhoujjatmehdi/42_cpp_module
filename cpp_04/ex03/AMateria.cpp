@@ -13,7 +13,7 @@ AMateria::AMateria(AMateria& obj)
 AMateria& AMateria::operator=(AMateria& obj)
 {
     cout << "Materia: Copy Assignement overload Called"<< endl;
-    *this = obj;
+    this->type = obj.type;
     return *this;
 }
 AMateria::~AMateria()

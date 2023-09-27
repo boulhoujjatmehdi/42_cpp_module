@@ -9,8 +9,7 @@ using std::string;
 
 class Cure:public AMateria
 {
-protected:
-    string type;
+
 public:
 //---------ORTHODOX---------------
 Cure();

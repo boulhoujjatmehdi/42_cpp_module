@@ -9,8 +9,7 @@ using std::string;
 
 class Ice:public AMateria
 {
-protected:
-    string type;
+
 public:
 //---------ORTHODOX---------------
 Ice();

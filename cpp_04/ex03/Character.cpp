@@ -1,6 +1,17 @@
 #include "Character.hpp"
 
 
+//---------ORTHODOX-----------
+Character::~Character()
+{
+    for(unsigned int i = 0; i < inv_stat; i++)
+    {
+        delete inventory[i];
+    }
+}
+//---------ORTHODOX-----------
+
+
 string const& Character::getName()const
 {
     return this->Name;
@@ -8,23 +19,24 @@ string const& Character::getName()const
 
 void Character::equip(AMateria* m)
 {
-    start:
-    if(inv_stat < 3)
+    start1:
+    if(inv_stat < 4)
     {
         inventory[inv_stat] = m;
         inv_stat++;
     }
     else
     {
+        AMateria *tmp =  *inventory; // save the first obj's pointer
         unequip(0);
-        goto start;
-        //TODO: REMOVE THE FIRST AND SHIFT THE OTHERS, -SO SECOND BECOMES THE FIRST
+        delete tmp;//TODO yellow: also i can put it on top of unequip: test this later
+        goto start1;
     }
 }
 // remove the AMateria in the idx
 void Character::unequip(int idx)
 {
-    if(0< idx < 4)
+    if(0<= idx && idx < 4)
     {
         for (int i = idx; i < 3; i++)
         {
