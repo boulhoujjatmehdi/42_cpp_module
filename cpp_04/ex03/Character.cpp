@@ -5,12 +5,13 @@
 Character::Character()
 {
     this->Name = "undifined name";
+    inv_stat = 0;
 }
 Character::~Character()
 {
     for(unsigned int i = 0; i < inv_stat; i++)
     {
-        delete inventory[i];
+        delete inventory[i]; //TODO: UNCOMENT
     }
 }
 Character::Character(const Character& obj)
@@ -30,25 +31,27 @@ Character& Character::operator=(const Character& obj)
 }
 //---------ORTHODOX-----------
 
-
 string const& Character::getName()const
 {
+    // cout << "<" << this->Name<< ">";    
     return this->Name;
 }
 
 void Character::equip(AMateria* m)
 {
+    if(!m)
+        return ;
     start1:
     if(inv_stat < 4)
     {
-        inventory[inv_stat] = m;
+        inventory[inv_stat] = m->clone();
         inv_stat++;
     }
     else
     {
-        AMateria *tmp =  *inventory; // save the first obj's pointer
+        // AMateria *tmp =  *inventory; // save the first obj's pointer
         unequip(0);
-        delete tmp;//TODO yellow: also i can put it on top of unequip: test this later
+        // delete tmp;//TODO yellow: also i can put it on top of unequip: test this later
         goto start1;
     }
 }
@@ -66,10 +69,12 @@ void Character::unequip(int idx)
 }
 
 void Character::use(int idx, ICharacter& target)
-{ 
-    cout << "before---------------- idx="<< idx << endl;
-    inventory[idx]->use(target);
-    cout << "after ----------------"<< endl;
+{
+    if(0<= idx && (unsigned int)idx < inv_stat)
+    {
+        inventory[idx]->use(target);
+        (void)target;
+    }    
 }
 
 //constructor with name

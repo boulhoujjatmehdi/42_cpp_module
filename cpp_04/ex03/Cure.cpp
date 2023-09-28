@@ -3,23 +3,23 @@
 
 Cure::Cure()
 {
-    cout << "CURE:          Default Constructor Called"<< endl;
+    // cout << "CURE:          Default Constructor Called"<< endl;
     this->type = "cure";
 }
 Cure::Cure(Cure& obj)
 {
-    cout << "CURE:          Copy Constructor Called"<< endl;
+    // cout << "CURE:          Copy Constructor Called"<< endl;
     this->type = obj.type;
 }
 Cure& Cure::operator=(Cure& obj)
 {
-    cout << "CURE:          Copy Assignement overload Called"<< endl;
+    // cout << "CURE:          Copy Assignement overload Called"<< endl;
     this->type = obj.type;
     return *this;
 }
 Cure::~Cure()
 {
-    cout << "CURE:          Copy Constructor Called"<< endl;
+    // cout << "CURE:          Copy Constructor Called"<< endl;
 }
 //---------ORTHODOX---------------
 

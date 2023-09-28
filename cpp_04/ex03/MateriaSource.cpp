@@ -33,7 +33,6 @@ void  MateriaSource::learnMateria(AMateria* obj)
     if(stash_count < 4)
     {
         stash[stash_count] = obj;
-        cout << "MateriaSource: learnMateria <"<< stash[stash_count]->getType()<< ">"<< endl;
         stash_count++;
     }
     else
@@ -42,19 +41,13 @@ void  MateriaSource::learnMateria(AMateria* obj)
 
 AMateria* MateriaSource::createMateria(string const &type)
 {
-    
-    cout << "MateriaSource: CreateMaterial called!"<< endl;
-    cout << "------------------------------------------"<< endl;
     for (int i = 0; i < stash_count;i++)
     {
-        cout<< "== "<< stash[i]->getType() << " =="<< endl;
         if(stash[i]->getType() == type)
         {
-            cout << "MateriaSource: return new materia!"<< endl;
             return stash[i];
         }
     }
-    cout << "------------------------------------------"<< endl;
     return 0;
 }
 

@@ -3,24 +3,14 @@
 #include "Cat.hpp"
 #include "WrongCat.hpp"
 
-// int main()
-// {
-//     Dog dog_obj;
-//     dog_obj.makeSound();
-//     Cat cat_obj;
-//     cat_obj.makeSound();
-    
 
-
-
-// }
 int main()
 {
 const Animal* meta = new Animal();
 const Animal* j = new Dog();
 const Animal* i = new Cat();
-std::cout << j->getType() << " " << std::endl;
-std::cout << i->getType() << " " << std::endl;
+std::cout << j->getType() << "-" << std::endl;
+std::cout << i->getType() << "-" << std::endl;
 i->makeSound();
 j->makeSound();
 meta->makeSound();
@@ -31,7 +21,9 @@ aa->makeSound();
 cout << "--------------------"<< endl;
 WrongCat bb;
 bb.makeSound();
+//TODO: DELETE FOR ESCAPE LEAKS.
 
+system("leaks progName");
 return 0;
 }
 

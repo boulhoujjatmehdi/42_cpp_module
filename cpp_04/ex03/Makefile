@@ -4,7 +4,8 @@ NAME = progName
 SRC = main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp  MateriaSource.cpp
 HED =  AMateria.hpp Ice.hpp Cure.hpp Character.hpp  ICharacter.hpp  IMateriaSource.hpp MateriaSource.hpp
 
-cc = c++ -std=c++98 -Wall -Werror -Wextra
+cc = c++ -std=c++98 -Wall -Werror -Wextra\
+# -fsanitize=address
 
 all: $(NAME)
 
