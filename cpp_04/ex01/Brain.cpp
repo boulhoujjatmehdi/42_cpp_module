@@ -21,7 +21,6 @@ Brain& Brain::operator=(Brain& obj)
     for (int i = 0; i < nbIdeas; i++)
         this->ideas[i] = obj.ideas[i];
     
-    (void)obj;
     return *this;
 }
 //---------ORTHODOX------------------
@@ -45,7 +44,6 @@ void Brain::addIdea(string str)
 }
 string Brain::getIdea(int idx)
 {
-    cout << "++++++"<< nbIdeas << "++++++" << endl;
     if(nbIdeas &&  idx >=0 && idx < nbIdeas)
         return ideas[idx];
     return "!!!!NO IDEA FOUND IN THIS INDEX!!!!";

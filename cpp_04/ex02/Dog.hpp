@@ -15,9 +15,6 @@ public:
 
     void makeSound()const;
 
-    // void add_idea(string ida);
-    // string get_idea(int nb);
-
     string get_idea(int idx);
     void add_idea(string str);
 };

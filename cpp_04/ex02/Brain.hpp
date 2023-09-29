@@ -22,7 +22,6 @@ public:
     void setNb(int newNb);
 
     void addIdea(string str);
-    //idx starts from 0
     string getIdea(int idx);
 };
 

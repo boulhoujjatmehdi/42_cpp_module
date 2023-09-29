@@ -13,7 +13,9 @@ class Cat:public Animal
         Cat(Cat& obj);
         Cat& operator=(Cat& obj);
         void makeSound() const;
-        //TODO: ADD BRAIN FUNTIONS GETTERS AND SETTERS
+
+        string get_idea(int idx);
+        void add_idea(string str);
 };
 
 

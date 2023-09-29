@@ -13,10 +13,12 @@ Dog::~Dog()
 }
 Dog::Dog(Dog& obj)
 {
+    cout << "Dog:    Copy constructor called"<< endl;
     *this = obj;
 }
 Dog& Dog::operator=(Dog& obj)
 {
+    cout << "Dog:    Copy operator overload called"<< endl;
     this->type = obj.type;
     return *this;
 }

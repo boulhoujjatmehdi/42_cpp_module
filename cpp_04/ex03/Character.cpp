@@ -25,7 +25,7 @@ Character& Character::operator=(const Character& obj)
     this->inv_stat = obj.inv_stat;
     for(unsigned int i = 0; i < inv_stat;i++)
     {
-        inventory[i] = obj.inventory[i];
+        inventory[i] = obj.inventory[i]->clone();
     }
     return *this; 
 }
@@ -33,7 +33,7 @@ Character& Character::operator=(const Character& obj)
 
 string const& Character::getName()const
 {
-    // cout << "<" << this->Name<< ">";    
+ 
     return this->Name;
 }
 
@@ -49,9 +49,9 @@ void Character::equip(AMateria* m)
     }
     else
     {
-        // AMateria *tmp =  *inventory; // save the first obj's pointer
+        AMateria *tmp =  *inventory;
+        delete tmp;
         unequip(0);
-        // delete tmp;//TODO yellow: also i can put it on top of unequip: test this later
         goto start1;
     }
 }

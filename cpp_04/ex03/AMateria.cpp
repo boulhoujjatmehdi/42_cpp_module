@@ -27,7 +27,7 @@ AMateria::~AMateria()
 
 AMateria::AMateria(std::string const & type): type(type){}
 
-void AMateria::use(ICharacter& target)
+void AMateria::use(ICharacter& target) 
 {
     cout << "AMateria: Default USE on <"<<target.getName()<<">!"<<endl;
 }

@@ -26,12 +26,18 @@ Cat& Cat::operator=(Cat& obj)
     this->brain = new Brain(*obj.brain);
     return *this;
 }
-
-
-
 //----------ORTHODOX----------
 
 void Cat::makeSound() const 
 {
     cout << "Cat:    MEOWING" << endl;
+}
+
+string Cat::get_idea(int idx)
+{
+    return brain->getIdea(idx);
+}
+void Cat::add_idea(string str)
+{
+    brain->addIdea(str);
 }

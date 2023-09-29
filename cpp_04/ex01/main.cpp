@@ -39,8 +39,8 @@ int main()
         cout << "TESTS TO SHOW THAT BRAIN WORKS"                                                << endl;
         cout << "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n"  << endl;
         Dog *hayawan = new Dog();
-        hayawan->add_idea("1111 idea");
-        hayawan->add_idea("2222 idea");
+        hayawan->add_idea("first idea");
+        hayawan->add_idea("second idea");
         cout << hayawan->get_idea(0)<< endl;
         cout << hayawan->get_idea(1)<< endl;
         delete hayawan;
@@ -57,10 +57,16 @@ int main()
         ct.add_idea("idea one one one");
         ct.add_idea("idea two two two");
         Dog st = ct;
-        cout << "week week "<< ct.get_idea(0)<< endl;;
-        cout << "week week "<< st.get_idea(0)<< endl;;
+        cout << "week week "<< ct.get_idea(0)<< endl;
+        cout << "week week "<< st.get_idea(0)<< endl;
+
     }
-    system("leaks progName");//TODO: WAS HERE!!!!!TEST AND CONTINUE.
+    {
+        Dog basic;
+        {
+            Dog tmp = basic;
+        }
+    }
     return 0;
 }
 

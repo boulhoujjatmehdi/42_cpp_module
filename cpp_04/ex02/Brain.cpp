@@ -11,14 +11,16 @@ Brain::~Brain()
 Brain::Brain(Brain& obj)
 {
 
-    cout << "Brain: Destructor called"<< endl;
+    cout << "Brain: Copy constructor called"<< endl;
     *this = obj;
 }
 Brain& Brain::operator=(Brain& obj)
 {
-    cout << "Brain: Destructor called"<< endl;
-    // this->ideas = obj.ideas;
-    (void)obj;//TODO: THIS SHOULD BE ASSIGNED FROM "OBJ" TO "THIS".
+    cout << "Brain: Copy assignement overload called"<< endl;
+    this->nbIdeas = obj.nbIdeas;
+    for (int i = 0; i < nbIdeas; i++)
+        this->ideas[i] = obj.ideas[i];
+    
     return *this;
 }
 //---------ORTHODOX------------------
@@ -42,7 +44,8 @@ void Brain::addIdea(string str)
 }
 string Brain::getIdea(int idx)
 {
-    if(idx >=0 && idx < nbIdeas)
+    cout << "++++++"<< nbIdeas << "++++++" << endl;
+    if(nbIdeas &&  idx >=0 && idx < nbIdeas)
         return ideas[idx];
     return "!!!!NO IDEA FOUND IN THIS INDEX!!!!";
 }

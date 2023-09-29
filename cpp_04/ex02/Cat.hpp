@@ -13,6 +13,9 @@ class Cat:public Animal
         Cat(Cat& obj);
         Cat& operator=(Cat& obj);
         void makeSound() const;
+
+        string get_idea(int idx);
+        void add_idea(string str);
 };
 
 
