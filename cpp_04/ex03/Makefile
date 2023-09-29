@@ -4,16 +4,20 @@ NAME = progName
 SRC = main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp  MateriaSource.cpp
 HED =  AMateria.hpp Ice.hpp Cure.hpp Character.hpp  ICharacter.hpp  IMateriaSource.hpp MateriaSource.hpp
 
-cc = c++ -std=c++98 -Wall -Werror -Wextra\
-# -fsanitize=address
+CXX = c++ 
+CXXFLAGS= -std=c++98 -Wall -Werror -Wextra
+OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
 
-$(NAME): $(SRC) $(HED)
-	$(cc) $(SRC) -o $@
+%.o:%.cpp $(HED)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+	
+$(NAME):$(HED) $(OBJ) 
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $@
 
 clean:
-	rm -rf $(NAME).obj
+	rm -rf $(OBJ)
 
 fclean: clean
 	rm -rf $(NAME)
