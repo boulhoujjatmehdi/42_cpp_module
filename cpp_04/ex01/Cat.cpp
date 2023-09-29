@@ -16,11 +16,14 @@ Cat::~Cat()
 }
 Cat::Cat(Cat& obj)
 {
+    cout << "Cat:    Copy constructor called"<< endl;
     *this = obj;
 }
 Cat& Cat::operator=(Cat& obj)
 {
+    cout << "Cat:    Copy operator overload called"<< endl;
     this->type = obj.type;
+    this->brain = new Brain(*obj.brain);
     return *this;
 }
 

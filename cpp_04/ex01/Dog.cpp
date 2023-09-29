@@ -22,6 +22,7 @@ Dog& Dog::operator=(Dog& obj)
 {
     cout << "Dog:    Copy operator overload called"<< endl;
     this->type = obj.type;
+    this->brain = new Brain(*obj.brain);
     return *this;
 }
 //----------ORTHODOX----------
@@ -30,11 +31,6 @@ void Dog::makeSound() const
 {
     cout << "Dog:    BARKING"<< endl;
 }
-
-// string Dog::get_ideas(int idx)
-// {
-//     return brain
-// }
 
 string Dog::get_idea(int idx)
 {
