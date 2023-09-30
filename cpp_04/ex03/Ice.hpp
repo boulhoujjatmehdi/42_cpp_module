@@ -10,16 +10,16 @@ using std::string;
 class Ice:public AMateria
 {
 
-public:
-//---------ORTHODOX---------------
-Ice();
-Ice(Ice& obj);
-Ice& operator=(Ice& obj);
-~Ice();
-//---------ORTHODOX---------------
+    public:
+    //---------ORTHODOX---------------
+    Ice();
+    Ice(Ice& obj);
+    Ice& operator=(Ice& obj);
+    ~Ice();
+    //---------ORTHODOX---------------
 
-virtual Ice* clone() const;
-virtual void use(ICharacter& target);
+    virtual Ice* clone() const;
+    virtual void use(ICharacter& target);
 };
 
 

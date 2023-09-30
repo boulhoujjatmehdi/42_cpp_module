@@ -30,8 +30,6 @@ delete aa;
 
 return 0;
 }
-
-
 //______________THEIR MAIN__________________
 
 // int main() {

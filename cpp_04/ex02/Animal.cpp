@@ -10,10 +10,12 @@ Animal::~Animal()
 }
 Animal::Animal(Animal& obj)
 {
+    cout << "Animal: Copy constructor called"<< endl;
     *this = obj;
 }
 Animal& Animal::operator=(Animal& obj)
 {
+    cout << "Animal: Copy assignement operator called"<< endl;
     this->type = obj.type;
     return *this;
 }
