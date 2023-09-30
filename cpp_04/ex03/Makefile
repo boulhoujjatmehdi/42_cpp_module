@@ -1,8 +1,8 @@
 
 NAME = progName
 
-SRC = main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp  MateriaSource.cpp
-HED =  AMateria.hpp Ice.hpp Cure.hpp Character.hpp  ICharacter.hpp  IMateriaSource.hpp MateriaSource.hpp
+SRC = $(wildcard *.cpp)
+HED =  $(wildcard *.hpp)
 
 CXX = c++ 
 CXXFLAGS= -std=c++98 -Wall -Werror -Wextra
@@ -22,4 +22,4 @@ clean:
 fclean: clean
 	rm -rf $(NAME)
 
-re:	fclean all
+re:	fclean all  
