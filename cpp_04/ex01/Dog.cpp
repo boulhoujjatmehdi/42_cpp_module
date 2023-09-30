@@ -21,7 +21,8 @@ Dog::Dog(Dog& obj)
 Dog& Dog::operator=(Dog& obj)
 {
     cout << "Dog:    Copy operator overload called"<< endl;
-    this->type = obj.type;
+    this->type = obj.type; //TODO: free before adding new one
+    delete brain;
     this->brain = new Brain(*obj.brain);
     return *this;
 }
