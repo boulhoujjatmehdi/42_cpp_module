@@ -3,7 +3,7 @@
 
 Ice::Ice()
 {
-    // cout << "ICE:           Default Constructor Called"<< endl;
+    // cout << "ICE:           DefaultConstructor Called"<< endl;
     this->type = "ice";
 }
 Ice::Ice(Ice& obj)

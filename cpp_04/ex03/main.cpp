@@ -21,6 +21,7 @@ int main()
     delete bob;
     delete me;
     delete src;
+    system("leaks progName");
 
     return 0;
 }

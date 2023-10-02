@@ -3,7 +3,7 @@
 
 Cure::Cure()
 {
-    // cout << "CURE:          Default Constructor Called"<< endl;
+    // cout << "CURE:          DefaultConstructor Called"<< endl;
     this->type = "cure";
 }
 Cure::Cure(Cure& obj)

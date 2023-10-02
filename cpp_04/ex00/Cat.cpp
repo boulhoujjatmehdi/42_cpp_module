@@ -4,7 +4,7 @@
 
 Cat::Cat()
 {
-    cout << "Cat:    Defualt constructor called"<< endl;
+    cout << "Cat:    Default constructor called"<< endl;
     this->type  = "Cat";
 }
 Cat::~Cat()

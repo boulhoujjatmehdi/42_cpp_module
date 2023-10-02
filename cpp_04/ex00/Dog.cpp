@@ -4,7 +4,7 @@
 
 Dog::Dog()
 {
-    cout << "Dog:    Defualt constructor called"<< endl;
+    cout << "Dog:    Default constructor called"<< endl;
     this->type  = "Dog";
 }
 Dog::~Dog()

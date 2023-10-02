@@ -4,7 +4,7 @@
 
 WrongCat::WrongCat()
 {
-    cout << "WrongCat: Default constructor called"<< endl;
+    cout << "WrongCat: Defaultconstructor called"<< endl;
 }
 WrongCat::WrongCat(WrongCat& obj)
 {

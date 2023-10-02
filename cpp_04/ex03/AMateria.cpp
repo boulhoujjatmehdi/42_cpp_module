@@ -4,7 +4,7 @@
 AMateria::AMateria()
 {
     this->type = "type undifined";
-    // cout << "AMateria:      Default Constructor Called"<< endl;
+    // cout << "AMateria:      DefaultConstructor Called"<< endl;
 }
 AMateria::AMateria(AMateria& obj)
 {
@@ -29,7 +29,7 @@ AMateria::AMateria(std::string const & type): type(type){}
 
 void AMateria::use(ICharacter& target) 
 {
-    cout << "AMateria: Default USE on <"<<target.getName()<<">!"<<endl;
+    cout << "AMateria: DefaultUSE on <"<<target.getName()<<">!"<<endl;
 }
 string const& AMateria::getType() const
 {

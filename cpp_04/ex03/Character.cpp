@@ -16,6 +16,8 @@ Character::~Character()
 }
 Character::Character(const Character& obj)
 {
+    for (int i =0 ; i < 4 ; i++)
+        this->inventory[i] = nullptr;
     *this = obj;
 }
 
@@ -25,6 +27,8 @@ Character& Character::operator=(const Character& obj)
     this->inv_stat = obj.inv_stat;
     for(unsigned int i = 0; i < inv_stat;i++)
     {
+        if(inventory[i])
+            delete inventory[i];
         inventory[i] = obj.inventory[i]->clone();
     }
     return *this; 
@@ -55,7 +59,8 @@ void Character::equip(AMateria* m)
         goto start1;
     }
 }
-// remove the AMateria in the idx
+
+// Remove The AMateria in the idx
 void Character::unequip(int idx)
 {
     if(0<= idx && idx < 4)

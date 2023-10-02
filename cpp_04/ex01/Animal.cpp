@@ -2,7 +2,7 @@
 //----------ORTHODOX------------
 Animal::Animal()
 {
-    cout << "Animal: Defualt constructor called"<< endl;
+    cout << "Animal: Default constructor called"<< endl;
 }
 Animal::~Animal()
 {

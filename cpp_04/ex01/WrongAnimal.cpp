@@ -2,7 +2,7 @@
 
 WrongAnimal::WrongAnimal()
 {
-    cout << "WrongAnimal: Default constructor called"<< endl;
+    cout << "WrongAnimal: Defaultconstructor called"<< endl;
 }
 WrongAnimal::WrongAnimal(WrongAnimal& obj)
 {

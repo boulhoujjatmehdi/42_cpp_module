@@ -5,7 +5,7 @@
 
 Cat::Cat()
 {
-    cout << "Cat:    Defualt constructor called"<< endl;
+    cout << "Cat:    Default constructor called"<< endl;
     this->brain = new Brain();
     this->type  = "Cat";
 }
@@ -17,11 +17,14 @@ Cat::~Cat()
 Cat::Cat(Cat& obj)
 {
     cout << "Cat:    Copy constructor called"<< endl;
+    this->brain = nullptr;
     *this = obj;
 }
 Cat& Cat::operator=(Cat& obj)
 {
     cout << "Cat:    Copy operator overload called"<< endl;
+    if(this->brain)
+        delete this->brain;
     this->type = obj.type;
     this->brain = new Brain(*obj.brain);
     return *this;

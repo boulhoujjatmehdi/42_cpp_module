@@ -4,7 +4,7 @@
 
 Dog::Dog()
 {
-    cout << "Dog:    Defualt constructor called"<< endl;
+    cout << "Dog:    Default constructor called"<< endl;
     this->brain = new Brain();
     this->type  = "Dog";
 }
@@ -16,11 +16,14 @@ Dog::~Dog()
 Dog::Dog(Dog& obj)
 {
     cout << "Dog:    Copy constructor called"<< endl;
+    this->brain = nullptr;
     *this = obj;
 }
 Dog& Dog::operator=(Dog& obj)
 {
     cout << "Dog:    Copy operator overload called"<< endl;
+    if(this->brain)
+        delete this->brain;
     this->type = obj.type;
     this->brain = new Brain(*obj.brain);
     return *this;
