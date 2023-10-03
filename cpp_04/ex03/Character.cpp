@@ -11,7 +11,7 @@ Character::~Character()
 {
     for(unsigned int i = 0; i < inv_stat; i++)
     {
-        delete inventory[i]; //TODO: UNCOMENT
+        delete inventory[i];
     }
 }
 Character::Character(const Character& obj)
@@ -23,12 +23,17 @@ Character::Character(const Character& obj)
 
 Character& Character::operator=(const Character& obj)
 {
+    
     this->Name = obj.Name;
+    unsigned int tmp_i = inv_stat;
     this->inv_stat = obj.inv_stat;
     for(unsigned int i = 0; i < inv_stat;i++)
     {
-        if(inventory[i])
+        if(i < tmp_i && inventory[i])
+        {
             delete inventory[i];
+            inventory[i] = NULL;
+        }
         inventory[i] = obj.inventory[i]->clone();
     }
     return *this; 
@@ -43,7 +48,6 @@ string const& Character::getName()const
 
 void Character::equip(AMateria* m)
 {
-    // cout << "______"<< inv_stat<<"_______\n";
     if(!m)
         return ;
     start1:
@@ -73,6 +77,7 @@ void Character::unequip(int idx)
             inventory[i] = inventory[i+1];
         }
         inv_stat--;
+        inventory[inv_stat] = NULL;
     }
 }
 
@@ -89,4 +94,5 @@ void Character::use(int idx, ICharacter& target)
 Character::Character(string name)
 {
     this->Name = name;
+    this->inv_stat = 0;
 }

@@ -32,7 +32,7 @@ void  MateriaSource::learnMateria(AMateria* obj)
 {
     if(stash_count < 4)
     {
-        stash[stash_count] = obj->clone();
+        stash[stash_count] = obj;
         stash_count++;
     }
     else
@@ -45,7 +45,7 @@ AMateria* MateriaSource::createMateria(string const &type)
     {
         if(stash[i]->getType() == type)
         {
-            return stash[i];
+            return stash[i]->clone();
         }
     }
     return 0;

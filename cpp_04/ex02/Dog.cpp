@@ -16,7 +16,7 @@ Dog::~Dog()
 Dog::Dog(Dog& obj)
 {
     cout << "Dog:    Copy constructor called"<< endl;
-    this->brain = nullptr;
+    this->brain = NULL;
     *this = obj;
 }
 Dog& Dog::operator=(Dog& obj)

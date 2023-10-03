@@ -17,7 +17,7 @@ Cat::~Cat()
 Cat::Cat(Cat& obj)
 {
     cout << "Cat:    Copy constructor called"<< endl;
-    this->brain = nullptr;
+    this->brain = NULL;
     *this = obj;
 }
 Cat& Cat::operator=(Cat& obj)

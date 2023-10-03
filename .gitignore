@@ -2,3 +2,5 @@
 .vscode
 progName
 
+
+*.o
