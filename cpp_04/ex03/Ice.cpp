@@ -6,10 +6,10 @@ Ice::Ice()
     // cout << "ICE:           DefaultConstructor Called"<< endl;
     this->type = "ice";
 }
-Ice::Ice(Ice& obj)
+Ice::Ice(Ice& obj):AMateria(obj.type)
 {
     // cout << "ICE:           Copy Constructor Called"<< endl;
-    this->type = obj.type;
+    // this->type = obj.type;
 }
 Ice& Ice::operator=(Ice& obj)
 {

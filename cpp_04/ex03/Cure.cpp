@@ -6,10 +6,10 @@ Cure::Cure()
     // cout << "CURE:          DefaultConstructor Called"<< endl;
     this->type = "cure";
 }
-Cure::Cure(Cure& obj)
+Cure::Cure(Cure& obj):AMateria(obj.type)
 {
     // cout << "CURE:          Copy Constructor Called"<< endl;
-    this->type = obj.type;
+    // this->type = obj.type;
 }
 Cure& Cure::operator=(Cure& obj)
 {

@@ -17,7 +17,7 @@ Character::~Character()
 Character::Character(const Character& obj)
 {
     for (int i =0 ; i < 4 ; i++)
-        this->inventory[i] = nullptr;
+        this->inventory[i] = NULL;
     *this = obj;
 }
 
@@ -43,11 +43,13 @@ string const& Character::getName()const
 
 void Character::equip(AMateria* m)
 {
+    // cout << "______"<< inv_stat<<"_______\n";
     if(!m)
         return ;
     start1:
     if(inv_stat < 4)
     {
+
         inventory[inv_stat] = m->clone();
         inv_stat++;
     }
@@ -63,7 +65,8 @@ void Character::equip(AMateria* m)
 // Remove The AMateria in the idx
 void Character::unequip(int idx)
 {
-    if(0<= idx && idx < 4)
+    
+    if(inv_stat &&0<= idx && idx < 4 )
     {
         for (int i = idx; i < 3; i++)
         {
