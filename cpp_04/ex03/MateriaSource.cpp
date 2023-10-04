@@ -30,6 +30,8 @@ MateriaSource& MateriaSource::operator=(const MateriaSource &obj)
 //----------ORTHODOX------------
 void  MateriaSource::learnMateria(AMateria* obj)
 {
+    if(!obj)
+        return ;
     if(stash_count < 4)
     {
         stash[stash_count] = obj;
