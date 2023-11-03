@@ -7,6 +7,7 @@ using std::string;
 using std::cout;
 using std::endl;
 
+class Bureaucrat;
 class Form
 {
 private:
@@ -21,7 +22,7 @@ public:
     Form(Form& obj);
     Form& operator=(Form& obj);
     //orthodox//->end
-
+    Form(string name);
     class GradeTooHighException;
     class GradeTooLowException;
     void beSigned(Bureaucrat& obj);

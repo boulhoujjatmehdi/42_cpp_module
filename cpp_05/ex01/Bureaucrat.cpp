@@ -14,23 +14,23 @@ std::ostream& operator<< ( std::ostream& os,const Bureaucrat& obj)
 
 Bureaucrat::Bureaucrat(): _Name("Name"), _Grade(150)
 {
-    cout << "Default constructor called!" << endl;
+    // cout << "Bureaucrat Default constructor called!" << endl;
 }
 
 Bureaucrat::~Bureaucrat()
 {
-    cout << "Destructor called!" << endl;
+    // cout << "Bureaucrat Destructor called!" << endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& obj)
 {
-    cout << "Copy constructor called!" << endl;
+    // cout << "Bureaucrat Copy constructor called!" << endl;
     *this = obj;
 }
 
 Bureaucrat& Bureaucrat::operator= (const Bureaucrat& obj)
 {
-    cout << "Assignation operator called!" << endl;
+    // cout << "Bureaucrat Assignation operator called!" << endl;
     if (this != &obj)
     {
         this->_Grade = obj._Grade;
@@ -76,7 +76,14 @@ const char *Bureaucrat::GradeTooLowException::what() const _NOEXCEPT
 
 void Bureaucrat::signForm(Form& obj)
 {
-    if(obj.getIsSigned())
+    try
+    {
+
+        obj.beSigned(*this);
         cout <<this->_Name<< " signed " << obj.getName();
-    if()
+    }
+    catch(std::exception &e)
+    {
+        cout <<this->_Name<< " cannot sign " << obj.getName() << " because " << this->_Name << " grade is too low"<< endl;
+    }
 }

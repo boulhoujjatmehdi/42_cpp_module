@@ -3,25 +3,29 @@
 
 //implement orthodox//
 Form::Form(): Name("default"), isSigned(false), grade(150), eGrade(0){
-    cout << "Form default constructor called" << endl;
+    // cout << "Form default constructor called" << endl;
 }
 
 Form::~Form(){
-    cout << "Form destructor called" << endl;
+    // cout << "Form destructor called" << endl;
 }
 
 Form::Form(Form& obj): Name(obj.Name), isSigned(obj.isSigned), grade(obj.grade), eGrade(obj.eGrade){
-    cout << "Form copy constructor called" << endl;
+    // cout << "Form copy constructor called" << endl;
 }
 
 Form& Form::operator=(Form& obj){
-    cout << "Form assignement operator called" << endl;
+    // cout << "Form assignement operator called" << endl;
     if (this == &obj)
         return *this;
     this->isSigned = obj.isSigned;
     return *this;
 }
 //implement orthodox//--end
+
+Form::Form(string name): Name(name), isSigned(false), grade(150), eGrade(0){
+    // cout << "Form constructor called" << endl;
+}           
 
 const char* Form::GradeTooHighException::what() const _NOEXCEPT{
     return "Grade too high";
@@ -55,10 +59,11 @@ std::ostream& operator<< (std::ostream& os, Form& obj)
     return os;
 }
 
-void Form::beSigned(Bureaucrat& obj)
-{
-    if(this->getGrade() <= obj.getGrade())
-        throw GradeTooLowException();
+void Form::beSigned(Bureaucrat& obj){
+    if (obj.getGrade() > this->grade)
+        throw Form::GradeTooLowException();
+    else if (obj.getGrade() < this->eGrade)
+        throw Form::GradeTooHighException();
     else
-        isSigned = 1;
+        this->isSigned = true;
 }

@@ -10,7 +10,7 @@ using std::string;
 using std::cout;
 using std::endl;
 
-// class Form;
+class Form;
 
 class Bureaucrat
 {
