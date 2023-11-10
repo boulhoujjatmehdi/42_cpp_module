@@ -51,6 +51,7 @@ int Form::getGrade() const{
 int Form::getEGrade() const{
     return this->eGrade;
 }
+
 //implement getters//--end
 
 std::ostream& operator<< (std::ostream& os, Form& obj)
@@ -62,8 +63,6 @@ std::ostream& operator<< (std::ostream& os, Form& obj)
 void Form::beSigned(Bureaucrat& obj){
     if (obj.getGrade() > this->grade)
         throw Form::GradeTooLowException();
-    else if (obj.getGrade() < this->eGrade)
-        throw Form::GradeTooHighException();
     else
         this->isSigned = true;
 }

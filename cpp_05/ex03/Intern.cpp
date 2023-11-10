@@ -6,7 +6,7 @@
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:44:16 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/11/09 17:47:49 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/11/10 08:54:37 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ AForm* Intern::makeForm(string name, string target)
 
     PMF table[3] = {&Intern::new_shrubbry, &Intern::new_robomomy, &Intern::new_presidential};
     string names[3] = {"shrubbery creation", "robotomy request","presidential pardon"} ;
-
+    
     for (size_t i = 0; i < 3; i++)
     {
         if(names[i] == name)

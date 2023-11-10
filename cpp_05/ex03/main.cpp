@@ -6,10 +6,13 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "Intern.hpp"
-
+#include <math.h>
 
 int main()
 {
+        // int a = 0;
+        // int b = 1;
+        cout <<"c = "<<  << endl;
 
 
     try
@@ -38,18 +41,21 @@ int main()
 
         }
         {
-            Intern someRandomIntern;
-            AForm* rrf;
-            rrf = someRandomIntern.makeForm("robotomy request", "Bender");
-            cout << "egrade" <<rrf->getEGrade() << endl;
-            rrf = someRandomIntern.makeForm("shrubbery creation", "shrubbery");
-            cout << "egrade" <<rrf->getEGrade() << endl;
-            rrf = someRandomIntern.makeForm("presidential pardon", "home");
-            cout << "egrade" <<rrf->getEGrade() << endl;
+            // Intern someRandomIntern;
+            // AForm* rrf;
+            // rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+            // rrf = someRandomIntern.makeForm("shrubbery creation", "shrubbery");
+            // rrf = someRandomIntern.makeForm("presidential pardon", "home");
         }
+
+
     }
     catch(std::exception &e)
     {
         cout <<"Exception :"<< e.what()<< endl;
+    }
+    catch(...)
+    {
+        cout << "Unknown Exception" << endl;
     }
 }
