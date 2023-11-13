@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 15:09:45 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/11/12 12:06:53 by eboulhou         ###   ########.fr       */
+/*   Created: 2023/11/13 10:46:49 by eboulhou          #+#    #+#             */
+/*   Updated: 2023/11/13 13:11:48 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <limits>
-#include <cmath>
-#include <cfloat>
-// #include <string>
-// #include <cctype>
+#pragma once
 
-using std::string;
+#include <iostream>
+#include "Data.hpp"
 using std::cout;
 using std::endl;
 
-
-class ScalarConverter
+class Serializer
 {
-public:
-    static void convert(string str);
+    public:
+    //orthodox start
+        Serializer();
+        Serializer(const Serializer &src);
+        ~Serializer();
+        Serializer &operator=(const Serializer &rhs);
+    //ortho end
+        uintptr_t  serialize(Data* ptr);
+        Data* deserialize(uintptr_t raw);
 };

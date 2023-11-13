@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   Data.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 15:09:45 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/11/12 12:06:53 by eboulhou         ###   ########.fr       */
+/*   Created: 2023/11/13 13:10:33 by eboulhou          #+#    #+#             */
+/*   Updated: 2023/11/13 13:11:24 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <limits>
-#include <cmath>
-#include <cfloat>
-// #include <string>
-// #include <cctype>
+#pragma once
 
-using std::string;
-using std::cout;
-using std::endl;
-
-
-class ScalarConverter
+typedef struct s_Data
 {
-public:
-    static void convert(string str);
-};
+    int i;
+} Data;
