@@ -25,6 +25,7 @@ public:
     Bureaucrat& operator= (const Bureaucrat& obj);
     //ORTHODOX//
     Bureaucrat(string name);
+    Bureaucrat(string name, int grade);
     int getGrade() const;
     string getName() const;
     class GradeTooHighException;

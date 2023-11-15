@@ -2,7 +2,8 @@
 
 
 //implement orthodox//
-Form::Form(): Name("default"), isSigned(false), grade(150), eGrade(0){
+Form::Form(): Name("default"), isSigned(false), grade(150), eGrade(150){
+
     // cout << "Form default constructor called" << endl;
 }
 
@@ -23,8 +24,11 @@ Form& Form::operator=(Form& obj){
 }
 //implement orthodox//--end
 
-Form::Form(string name): Name(name), isSigned(false), grade(150), eGrade(0){
-    // cout << "Form constructor called" << endl;
+Form::Form(string name, int grade, int egrade): Name(name), isSigned(false), grade(grade), eGrade(egrade){
+    if(grade > 150 || eGrade > 150 )
+        throw Form::GradeTooLowException();
+    if(grade < 1 || eGrade < 1)
+        throw Form::GradeTooHighException();
 }           
 
 const char* Form::GradeTooHighException::what() const _NOEXCEPT{
@@ -54,9 +58,9 @@ int Form::getEGrade() const{
 
 //implement getters//--end
 
-std::ostream& operator<< (std::ostream& os, Form& obj)
+std::ostream& operator<< (std::ostream& os,const Form& obj)
 {
-    os << "Form name: " << obj.getName();
+    os << "Form name: " << obj.getName() << " | Grade: "<< obj.getGrade() << " | Execution Grade :"<< obj.getEGrade();
     return os;
 }
 

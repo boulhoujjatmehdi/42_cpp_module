@@ -5,9 +5,9 @@
 
 int main()
 {
-    Bureaucrat br("mehdi");
-    br.incrementGrade();
+    Bureaucrat br("MEHDI", 101);
     cout << br << endl;
-    Form fr;
+    Form fr("_FORM_", 100, 99);
+    cout << fr << endl;
     br.signForm(fr);
 }

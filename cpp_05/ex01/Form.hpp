@@ -13,8 +13,8 @@ class Form
 private:
     const string Name;
     bool isSigned;
-    int grade;
-    int eGrade;
+    const int grade;
+    const int eGrade;
 public:
     //orthodox//->begin
     Form();
@@ -22,11 +22,11 @@ public:
     Form(Form& obj);
     Form& operator=(Form& obj);
     //orthodox//->end
-    Form(string name);
+    Form(string name, int grade, int egrade);
     class GradeTooHighException;
     class GradeTooLowException;
     void beSigned(Bureaucrat& obj);
-    
+
     //getters//->begin
     string getName() const;
     bool getIsSigned() const;
@@ -46,6 +46,6 @@ class Form::GradeTooLowException: public std::exception
     const char* what() const _NOEXCEPT;
 };
 
-std::ostream& operator<< (std::ostream& os, const Form& obj);
+std::ostream& operator<<(std::ostream& os, const Form& obj);
 
 #endif

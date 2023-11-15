@@ -38,6 +38,15 @@ Bureaucrat& Bureaucrat::operator= (const Bureaucrat& obj)
     return (*this);
 }
 
+Bureaucrat::Bureaucrat(string name, int grade): _Name(name){
+    if(grade >= 1 && grade <= 150)
+        this->_Grade = grade;
+    else if (grade < 1)
+        throw Bureaucrat::GradeTooHighException();
+    else if (grade > 150)
+        throw Bureaucrat::GradeTooLowException();
+}
+
 int Bureaucrat::getGrade() const
 {
     return (this->_Grade);
@@ -78,9 +87,8 @@ void Bureaucrat::signForm(Form& obj)
 {
     try
     {
-
         obj.beSigned(*this);
-        cout <<this->_Name<< " signed " << obj.getName();
+        cout <<this->_Name<< " signed " << obj.getName() << endl;;
     }
     catch(std::exception &e)
     {
