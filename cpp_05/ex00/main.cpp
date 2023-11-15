@@ -6,12 +6,9 @@ int main()
 {
     try
     {
-        Bureaucrat br("mehdi");
-        for(int i = 0; i < 150; i++)
-        {
-            br.incrementGrade();
-            cout << br<< endl;
-        }
+        Bureaucrat ay("ayac" , 1);
+        ay.incrementGrade();
+
     }
     catch(const std::exception& e)
     {

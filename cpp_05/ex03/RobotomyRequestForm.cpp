@@ -6,13 +6,13 @@
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 09:44:09 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/11/09 15:50:34 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/11/15 10:08:51 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 //orthodox  
-RobotomyRequestForm::RobotomyRequestForm():AForm("default", 72, 45), _target("DefTarget"){
+RobotomyRequestForm::RobotomyRequestForm():AForm("RobotomyRequestForm", 72, 45), _target("DefTarget"){
     // cout << "RobotomyRequestForm default constructor called"<< endl;
 }
 RobotomyRequestForm::~RobotomyRequestForm(){
@@ -24,13 +24,11 @@ RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm& obj){
 RobotomyRequestForm& RobotomyRequestForm::operator=(RobotomyRequestForm& obj)
 {
     this->setIsSigned(obj.getIsSigned());
-    this->setGrade(obj.getGrade());
-    this->setEGrade(obj.getEGrade());
     this->_target = obj._target;
     return *this;
 }
 //orthodox
-RobotomyRequestForm::RobotomyRequestForm(string target):AForm("default", 72, 45), _target(target){
+RobotomyRequestForm::RobotomyRequestForm(string target):AForm("RobotomyRequestForm", 72, 45), _target(target){
 }
 const char* RobotomyRequestForm::FormIsNotSignedException::what() const _NOEXCEPT
 {

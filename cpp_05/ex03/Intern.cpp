@@ -6,11 +6,26 @@
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:44:16 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/11/10 08:54:37 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/11/15 11:28:29 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Intern.hpp"
+
+
+//orhtodox
+Intern::Intern(){
+}
+Intern::~Intern(){
+}
+Intern::Intern(Intern& obj){
+    *this = obj;
+}
+Intern& Intern::operator=(Intern& obj){
+    (void)obj;
+    return *this;
+}
+//orhtodox
 
 
 AForm* Intern::makeForm(string name, string target)

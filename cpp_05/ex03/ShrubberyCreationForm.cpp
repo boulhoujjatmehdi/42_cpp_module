@@ -6,13 +6,13 @@
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 15:56:05 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/11/09 16:54:36 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/11/15 10:09:29 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(): AForm("default", 145, 137){
+ShrubberyCreationForm::ShrubberyCreationForm(): AForm("ShrubberyCreationForm", 145, 137){
 }
 ShrubberyCreationForm::~ShrubberyCreationForm(){
 }
@@ -22,7 +22,7 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(ShrubberyCreationForm& o
     this->setIsSigned(obj.getIsSigned());
     return *this;
 }
-ShrubberyCreationForm::ShrubberyCreationForm(string target): AForm("default", 145, 137), _target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(string target): AForm("ShrubberyCreationForm", 145, 137), _target(target)
 {
     
 }

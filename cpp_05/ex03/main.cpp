@@ -10,11 +10,6 @@
 
 int main()
 {
-        // int a = 0;
-        // int b = 1;
-        cout <<"c = "<<  << endl;
-
-
     try
     {
         {
@@ -23,29 +18,39 @@ int main()
             // AForm *fr2 = new RobotomyRequestForm("home");
             // fr2->beSigned(mehdi);
             // fr2->execute(mehdi);
+            // delete fr2;
         }
-        cout << "------------------------------------------------"<< endl;
         {
-            // Bureaucrat mehdi("mehdi", 150);
+            // cout << "------------------------------------------------"<< endl;
+            // Bureaucrat mehdi("mehdi", 75);
             // AForm *form = new ShrubberyCreationForm();
             // form->beSigned(mehdi);
+            // cout <<"form sign : " << (form->getIsSigned()? "true": "false") << endl;
+            // delete form;
         }
-        cout << "------------------------------------------------"<< endl;
         {
+            // cout << "------------------------------------------------"<< endl;
             // Bureaucrat mehdi("mehdi", 1);
             // Bureaucrat ayac("ayac", 120);
             // AForm *form = new PresidentialPardonForm("PRESIDENT");
             // form->beSigned(mehdi);
             // // form->execute(mehdi);
             // mehdi.executeForm(*form);
-
+            // delete form;
         }
         {
-            // Intern someRandomIntern;
-            // AForm* rrf;
-            // rrf = someRandomIntern.makeForm("robotomy request", "Bender");
-            // rrf = someRandomIntern.makeForm("shrubbery creation", "shrubbery");
-            // rrf = someRandomIntern.makeForm("presidential pardon", "home");
+            cout << "------------------------------------------------"<< endl;
+            Intern someRandomIntern;
+            AForm* rrf;
+            rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+            cout << *rrf << endl;
+            delete(rrf);
+            rrf = someRandomIntern.makeForm("shrubbery creation", "shrubbery");
+            cout << *rrf << endl;
+            delete(rrf);
+            rrf = someRandomIntern.makeForm("presidential pardon", "pardon");
+            cout << *rrf << endl;
+            delete(rrf);
         }
 
 

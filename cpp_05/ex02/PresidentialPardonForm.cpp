@@ -6,7 +6,7 @@
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:05:42 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/11/09 16:00:55 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/11/15 09:36:51 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm& obj)
 
 PresidentialPardonForm& PresidentialPardonForm::operator=(PresidentialPardonForm& obj)
 {
-    this->setEGrade(obj.getEGrade());
-    this->setGrade(obj.getGrade());
     this->setIsSigned(obj.getIsSigned());
     return *this;
 }

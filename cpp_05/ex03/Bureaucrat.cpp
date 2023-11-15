@@ -40,9 +40,9 @@ Bureaucrat::Bureaucrat(string name, int grade): _Name(name){
     if(grade >= 1 && grade <= 150)
         this->_Grade = grade;
     else if (grade < 1)
-        throw Bureaucrat::GradeTooLowException();
-    else if (grade > 150)
         throw Bureaucrat::GradeTooHighException();
+    else if (grade > 150)
+        throw Bureaucrat::GradeTooLowException();
 }
 
 int Bureaucrat::getGrade() const

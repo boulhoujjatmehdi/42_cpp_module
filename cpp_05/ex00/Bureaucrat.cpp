@@ -12,28 +12,37 @@ std::ostream& operator<< ( std::ostream& os,const Bureaucrat& obj)
 
 Bureaucrat::Bureaucrat(): _Name("Name"), _Grade(150)
 {
-    cout << "Default constructor called!" << endl;
+    // cout << "Default constructor called!" << endl;
 }
 
 Bureaucrat::~Bureaucrat()
 {
-    cout << "Destructor called!" << endl;
+    // cout << "Destructor called!" << endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& obj)
 {
-    cout << "Copy constructor called!" << endl;
+    // cout << "Copy constructor called!" << endl;
     *this = obj;
 }
 
 Bureaucrat& Bureaucrat::operator= (const Bureaucrat& obj)
 {
-    cout << "Assignation operator called!" << endl;
+    // cout << "Assignation operator called!" << endl;
     if (this != &obj)
     {
         this->_Grade = obj._Grade;
     }
     return (*this);
+}
+
+Bureaucrat::Bureaucrat(string name, int grade): _Name(name){
+    if(grade >= 1 && grade <= 150)
+        this->_Grade = grade;
+    else if (grade < 1)
+        throw Bureaucrat::GradeTooHighException();
+    else if (grade > 150)
+        throw Bureaucrat::GradeTooLowException();
 }
 
 int Bureaucrat::getGrade() const

@@ -13,8 +13,8 @@ class AForm
 private:
     const string Name;
     bool isSigned;
-    int grade;
-    int eGrade;
+    const int grade;
+    const int eGrade;
 public:
     //orthodox//->begin
     AForm();
@@ -37,8 +37,6 @@ public:
 
     //setters//->begin
     void setIsSigned(bool isSigned);
-    void setGrade(int grade);
-    void setEGrade(int eGrade);
     //setters//->end
 
 

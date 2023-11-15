@@ -53,9 +53,9 @@ int AForm::getEGrade() const{
 }
 //implement getters//--end
 
-std::ostream& operator<< (std::ostream& os, AForm& obj)
+std::ostream& operator<< (std::ostream& os,const AForm& obj)
 {
-    os << "AForm name: " << obj.getName();
+    os << "Form name: " << obj.getName() << " | Grade: "<< obj.getGrade() << " | Execution Grade :"<< obj.getEGrade();
     return os;
 }
 
@@ -74,14 +74,6 @@ AForm::AForm(string name, int grade, int eGrade): Name(name), isSigned(false), g
 
 void AForm::setIsSigned(bool isSigned){
     this->isSigned = isSigned;
-}
-
-void AForm::setGrade(int grade){
-    this->grade = grade;
-}
-
-void AForm::setEGrade(int eGrade){
-    this->eGrade = eGrade;
 }
 
 //implement setters//--end
