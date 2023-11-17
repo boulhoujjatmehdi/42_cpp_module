@@ -6,11 +6,11 @@
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:22:19 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/11/16 15:25:58 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/11/17 10:58:26 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once 
+#pragma once
 
 #include <iostream>
 
@@ -21,9 +21,19 @@ template<typename T>
 class Array
 {
     T *array;
-    size_t n;
+    size_t size;
 public:
+    //orthodox
     Array();
+    ~Array();
+    Array(const Array &src);
+    Array &operator=(const Array &src);
+    //orthodox
+    T& operator[](int p); 
+    
+    Array(size_t n);
 
 };
 
+
+#include "Array.tpp"

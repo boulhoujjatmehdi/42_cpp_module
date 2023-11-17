@@ -6,14 +6,18 @@
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 15:21:50 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/11/16 15:26:21 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/11/17 10:05:00 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Array.hpp"
 
-int main()
-{
-    Array<int> aa;
+// int main()
+// {
+//     int * a = new int();
+//     cout << *a << endl;
+
+//     Array<int> aa(5);
     
-}
+    
+// }
