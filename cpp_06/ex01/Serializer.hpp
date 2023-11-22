@@ -6,7 +6,7 @@
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 10:46:49 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/11/13 13:11:48 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/11/21 13:04:13 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ using std::endl;
 
 class Serializer
 {
-    public:
-    //orthodox start
+    //orthodox
         Serializer();
         Serializer(const Serializer &src);
         ~Serializer();
         Serializer &operator=(const Serializer &rhs);
-    //ortho end
-        uintptr_t  serialize(Data* ptr);
-        Data* deserialize(uintptr_t raw);
+    //canonical
+    public:
+        static uintptr_t  serialize(Data* ptr);
+        static Data* deserialize(uintptr_t raw);
 };

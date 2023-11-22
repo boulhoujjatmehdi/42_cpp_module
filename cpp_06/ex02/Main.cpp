@@ -4,14 +4,22 @@
 
 Base * generate(void)
 {
-    std::srand(std::time(nullptr));
+    std::srand(std::time(NULL));
     int random = std::rand() % 3;
     if(random == 0)
+    {
+        cout << "A generated" << endl;
         return new A;
+    }
     if(random == 1)
+    {
+        cout << "B generated" << endl;
         return new B;
+    }
+    cout << "C generated" << endl;
     return new C;
 }
+
 void identify(Base* ptr)
 {
     if(!ptr)
@@ -21,14 +29,13 @@ void identify(Base* ptr)
     }
     Base *pt;
     if((pt = dynamic_cast<A*>(ptr)))
-        cout << "*A"<< endl;
+        cout << "A identified"<< endl;
     else if((pt = dynamic_cast<B*>(ptr)))
-        cout << "*B"<< endl;
+        cout << "B identified"<< endl;
     else if((pt = dynamic_cast<C*>(ptr)))
-        cout << "*C"<< endl;
+        cout << "C identified"<< endl;
     else 
         cout << "undefined type"<< endl;
-    
 }
 
 void identify(Base& ref)
@@ -61,8 +68,7 @@ int main()
 {
     Base* bs;
     bs = generate();
-    bs = NULL;
     identify(bs);
-    identify(NULL);
+    delete bs;
     return 0;
 }

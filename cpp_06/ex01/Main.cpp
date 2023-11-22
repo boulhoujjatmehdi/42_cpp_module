@@ -4,9 +4,12 @@
 int main()
 {
     Data dt;
-    Serializer serial;
-    cout << &dt << endl;
-    uintptr_t ll = serial.serialize(&dt);
-    Data * dd = serial.deserialize(ll);
-    cout << dd << endl;
+    // Serializer serial;
+    dt.i = 42;
+    cout << "before serializer  :"<< &dt << endl;
+    uintptr_t ll = Serializer::serialize(&dt);
+    cout << "after serializer   :"<<ll << endl;
+    Data * dd = Serializer::deserialize(ll);
+    cout << "after deserializer :"<< dd << endl;
+    cout << "after deserializer i :"<< dd->i << endl;
 }
