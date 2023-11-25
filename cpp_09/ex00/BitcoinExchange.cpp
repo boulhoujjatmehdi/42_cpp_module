@@ -6,7 +6,7 @@
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 12:01:26 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/11/25 14:13:06 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/11/25 15:27:17 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,24 @@
 //     return 0;
 // }
 
-
+int checkDateLimits(int year, int month, int day)
+{
+    if(month < 1 || month > 12 || day < 1 || day > 31)
+        return 1;
+    if(month == 2)
+    {
+        bool is_leap_year = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+        if(day > 29 || (day == 29 && !is_leap_year))
+            return 1;
+    }
+    else
+    if(month == 4 || month == 6 || month == 9 || month == 11)
+    {
+        if(day > 30)
+            return 1;
+    }
+    return 0;
+}
 
 int check_date(string date)
 {
@@ -46,6 +63,8 @@ int check_date(string date)
     tYear = locTime->tm_year + 1900;
     tMonth = locTime->tm_mon + 1;
     tDay = locTime->tm_mday;
+    if(checkDateLimits(year, month, day) && (ret = 10))
+        goto endd;
     if(tYear < year && (ret = 4))
         goto endd;
     if(tYear == year)
@@ -59,6 +78,10 @@ int check_date(string date)
             goto endd;
         }
     }
+
+    // check_february();
+
+    
     endd:
     return ret;
 }
@@ -68,7 +91,6 @@ int check_value(float value, string sValue)
 
     std::ostringstream sstrm;
     sstrm << value;
-    // cout << "<" << value << ">" << "<" << sValue << ">" << endl;
     if(sstrm.str() != sValue)
         return 1;
     if(value < 0)
@@ -96,7 +118,7 @@ int check_date_value(string date, float value,string sValue, string line)
     else if(ret == 9)
         cout << "Error: too large a number."<< endl;
     else if(ret)
-        cout << "Error: bad input: " << ret<< ": "<< line<< endl;
+        cout << "Error: bad input " << ret<< ": "<< line<< endl;
     return ret;
 }
 
@@ -105,7 +127,7 @@ void executeInput(std::ifstream& istrm,MyMap data)
     string line;
     std::getline(istrm, line);
     if(line != "date | value")
-        cout << "Error: first line should be \"date | value\" " << endl;//TODO: CHECK WAHT TO DO IN THIS CASE
+        cout << "Error: first line should be \"date | value\" " << endl;
     while(std::getline(istrm, line))
     {
         size_t pos = line.find('|');
