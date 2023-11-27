@@ -1,5 +1,5 @@
 
-NAME = RPN
+NAME = PmergeMe
 
 SRC = $(wildcard *.cpp)
 HED =  $(wildcard *.hpp) $(wildcard *.tpp)
