@@ -6,31 +6,25 @@
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 10:52:27 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/11/16 13:22:54 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/11/25 17:22:04 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "iter.hpp"
 
-char my_toupper(char c)
+void  my_toupper(const char& c)
 {
-    return toupper(c);
+    cout << static_cast<char>(std::toupper(c))<< endl;
 }
-int increment (int i)
+void  increment (const int& i)
 {
-    return i + 1;
+    cout << i + 1<< endl;
 }
 
 int main()
 {
-    char a[20] = "mehdi boulhoujjat";
-    // char *aa = NULL;
-    ::iter(a, 10, my_toupper);
-    cout << a << endl;
-    int nbs[10] = {0,10,20,30,40,50,60,70,80,90};
-    ::iter(nbs, 10, increment);
-    for (int i = 0; i < 10; i++) {
-        std::cout << nbs[i] << " ";
-    }
-    std::cout << std::endl;
+	char a[20] = "mehdi boulhoujjat";
+	iter(a, 5, my_toupper);
+	int nbs[10] = {0,10,20,30,40,50,60,70,80,90};
+	iter(nbs, 5, increment);
 }

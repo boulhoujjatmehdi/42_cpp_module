@@ -6,7 +6,7 @@
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 12:01:26 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/11/25 15:27:17 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/11/25 15:46:59 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ int check_date(string date)
 
 int check_value(float value, string sValue)
 {
-
     std::ostringstream sstrm;
     sstrm << value;
     if(sstrm.str() != sValue)

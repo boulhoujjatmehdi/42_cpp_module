@@ -5,9 +5,9 @@
 int main(int, char**)
 {
     Array<int> numbers(MAX_VAL);
+
     int* mirror = new int[MAX_VAL];
     srand(time(NULL));
-    cout << "mehdi boulhoujjat"<< endl;
     for (int i = 0; i < MAX_VAL; i++)
     {
         const int value = rand();
@@ -15,14 +15,11 @@ int main(int, char**)
         mirror[i] = value;
     }
     //SCOPE
-    cout << numbers[0]<< endl;
-    cout << mirror[0]<< endl;
-    puts("mehdi");
     {
         Array<int> tmp = numbers;
-    puts("mehdi1");
         Array<int> test(tmp);
     }
+
     for (int i = 0; i < MAX_VAL; i++)
     {
         if (mirror[i] != numbers[i])

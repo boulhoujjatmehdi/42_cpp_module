@@ -6,12 +6,12 @@
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 10:20:35 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/11/16 10:54:20 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/11/25 17:35:35 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once //guard
 
-#pragma once 
 template<typename T>
 void swap(T& a, T& b)
 {

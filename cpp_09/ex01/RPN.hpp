@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 15:21:50 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/11/17 10:05:00 by eboulhou         ###   ########.fr       */
+/*   Created: 2023/11/25 14:34:49 by eboulhou          #+#    #+#             */
+/*   Updated: 2023/11/25 14:51:10 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Array.hpp"
+#pragma once
 
-// int main()
-// {
-//     int * a = new int();
-//     cout << *a << endl;
+#include <iostream>
+#include <sstream>
+#include <stack>
 
-//     Array<int> aa(5);
-    
-    
-// }
+
+using std::cout;
+using std::endl;
+using std::string;
+
+int rpnFunc(string str);
