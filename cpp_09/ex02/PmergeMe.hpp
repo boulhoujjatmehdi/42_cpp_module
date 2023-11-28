@@ -6,7 +6,7 @@
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 10:51:33 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/11/27 19:29:56 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/11/28 18:15:15 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef vector<pairOfVecotrs> vectorOfPairs;
 typedef list<vector<int> > listOfVectors;
 
 void fill_args_in_list(list<int>& lst, char** av);
-void sort_list(vector<int>& lst);
+void sorting(vector<int>& lst);
 void print_list(const listOfVectors& lst);
 
 
@@ -53,8 +53,17 @@ void print_container(const T& lst)
     }
     cout << endl;
 }
-
-
+template<typename T>
+void iterator_increment(typename T::iterator& it,const T& lst, int nb)
+{
+    while(nb--)
+    {
+        if(it != lst.end())
+            it++;
+    }
+    if(it == lst.end())
+        it--;
+}
 
 template<typename T,typename P>
 void copy_container(const T& src, P& dst)

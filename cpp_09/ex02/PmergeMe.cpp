@@ -6,7 +6,7 @@
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 10:53:25 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/11/27 20:27:57 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/11/28 18:46:10 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,10 @@ void printPerPairs(const vectorOfPairs& vp)
     {
         cout << "[";
         for(vector<int>::const_iterator itt = it->first.cbegin(); itt != it->first.cend(); itt++)
-            cout << *itt;
-        cout << ",";
+            cout << *itt<<" ";
+        cout << "|";
         for(vector<int>::const_iterator itt = it->second.cbegin(); itt != it->second.cend(); itt++)
-            cout << *itt;
+            cout << *itt<< " ";
         cout << "]";
     }
     cout << endl;
@@ -118,13 +118,12 @@ void merging(vector<int>& lst, int P, int N)
         pv.second.clear();
     }
     back_to_list(vp, lst);
-    // printPerPairs(vp);
     
 }
 
 
 
-void mainChainPend(listOfVectors& mc, listOfVectors& pd, const vectorOfPairs& vp, vector<int>& remaining)
+void mainChainPend(listOfVectors& mc, listOfVectors& pd, listOfVectors& mcc , const vectorOfPairs& vp, vector<int>& remaining)
 {
     vectorOfPairs::const_iterator it = vp.begin();
     for (;it != vp.end(); it++)
@@ -139,6 +138,7 @@ void mainChainPend(listOfVectors& mc, listOfVectors& pd, const vectorOfPairs& vp
             pd.push_back(it->first);
             mc.push_back(it->second);
         }
+        mcc.push_back(it->second);
     }
     if(!remaining.empty())
         pd.push_back(remaining);
@@ -151,30 +151,91 @@ bool customCompare(vector<int> v1, vector<int> v2)
         return true;
     return false;
 }
+bool compair(vector<int> v1, vector<int> v2)
+{
+    if(v1.back() < v2.back())
+        return true;
+    return false;
+}
+
+void inserting(listOfVectors& mc, listOfVectors& pd, listOfVectors& mcc)
+{
+    listOfVectors::iterator it = pd.begin();
+    listOfVectors::iterator it_comp = mcc.begin();
+    listOfVectors::iterator it_pos;
+    it_comp++;
+    listOfVectors::iterator lower;
+    for (; it != pd.end(); it++)
+    {   
+        
+        if(it_comp != mcc.end())
+        {
+            // cout << "first: " << it->front() << " second: " << it_comp->front() << endl;
+            it_pos = std::lower_bound(mc.begin(), mc.end(), *it_comp, compair);
+            // cout << it_pos->front() << ", " << it_pos->back() << endl;
+            lower = std::lower_bound(mc.begin(), it_pos, *it, customCompare);
+        }
+        else
+            lower = std::lower_bound(mc.begin(), mc.end(), *it, customCompare);
+            
+        mc.insert(lower, *it);
+        if(it_comp != mcc.end())
+            it_comp ++;
+        
+    }
+    // pd.clear();
+    (void)mcc;
+}
+
+
 
 void inserting(listOfVectors& mc, listOfVectors& pd)
 {
+    (void)mc;
     listOfVectors::iterator it = pd.begin();
+    listOfVectors::iterator itt = pd.begin();
+    // listOfVectors::iterator it_mc = mc.begin();
+    listOfVectors::iterator it_pos;
     listOfVectors::iterator lower;
-    for (; it != pd.end(); it++)
-    {        
-        lower = std::lower_bound(mc.begin(), mc.end(), *it, customCompare );
-        mc.insert(lower, *it);
+    int tk;
+    int tk1;
+    int added = 1;
+    // cout << "mehdi boulhoujjat "<< endl;
+    for (size_t k = 2; k < pd.size(); k++)
+    {
+        tk = (std::pow(2, k + 1) + pow(-1, k)) / 3;
+        tk1 = (std::pow(2, k ) + pow(-1, k-1)) / 3 + 1;
+        
+        for (; tk >= tk1; tk--)
+        {
+            //insertion here
+            it_pos = mc.begin();
+            iterator_increment(it_pos, mc, tk+added);
+            itt = pd.begin();
+            iterator_increment(itt, pd, tk-2);
+            cout << "****";
+            print_container(*itt);
+            // lower = std::lower_bound(mc.begin(), it_pos, *it, customCompare);
+            // mc.insert(lower, *it);
+            // print_container(*lower);
+            cout <<"tk: "<<  tk - 2 << endl;
+            it++;
+            added ++;
+            if(it== pd.end())
+                return ;
+        }
     }
-    pd.clear();
 }
 
 
 void insertion(vector<int>&lst, int P, int N, vector<int>& remaining)
 {
-
     listOfVectors mainChain;
+    listOfVectors mcCompair;
     listOfVectors pend;
     vectorOfPairs vp;
     pairOfVecotrs pv;
     vector<int>::iterator it = lst.begin();
-    if(P == 1)
-        return;
     for (int j = 0; j < P; j++)
     {
         for (int k = j; k < j + N; k++)
@@ -190,9 +251,11 @@ void insertion(vector<int>&lst, int P, int N, vector<int>& remaining)
         pv.second.clear();
     }
     printPerPairs(vp);
-    mainChainPend(mainChain, pend, vp, remaining);
+    mainChainPend(mainChain, pend, mcCompair, vp, remaining);
     
+    // inserting(mainChain, pend, mcCompair);
     inserting(mainChain, pend);
+    pend.clear();
     
     convertToVector(lst, mainChain);
 }
@@ -211,7 +274,7 @@ void setRemaining(vector<int> lst,vector<int>& remaining, int P)
 }
 
 
-void sort_list(vector<int>& lst)
+void sorting(vector<int>& lst)
 {
     static int i = 1;
     vector<int> remaining;
@@ -223,10 +286,10 @@ void sort_list(vector<int>& lst)
     merging(lst, P, N);
     i++;
     if(P > 1)
-        sort_list(lst);
+        sorting(lst);
 
     cout << "S: "<< S<< " P: "<< P<< " N: " <<N << endl;
-    print_container(remaining);
+    // print_container(remaining);
     insertion(lst, P, N, remaining);
     cout << "----------------------------------------"<< count<<  endl;
     
