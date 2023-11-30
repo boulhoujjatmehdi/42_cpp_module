@@ -34,12 +34,12 @@ public:
 
 class Bureaucrat::GradeTooHighException: public std::exception
 {
-    const char* what()const _NOEXCEPT;
+    const char* what()const throw();
 };
 
 class Bureaucrat::GradeTooLowException: public std::exception
 {
-    const char * what() const _NOEXCEPT;
+    const char * what() const throw();
 };
 
 std::ostream& operator<< ( std::ostream& os,const Bureaucrat& obj);
