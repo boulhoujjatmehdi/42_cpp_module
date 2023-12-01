@@ -6,7 +6,7 @@
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 10:53:25 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/11/28 18:46:10 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/12/01 12:57:49 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,7 @@ void mainChainPend(listOfVectors& mc, listOfVectors& pd, listOfVectors& mcc , co
         {
             mc.push_back(it->first);
             mc.push_back(it->second);
+            pd.push_back(it->first);
         }
         else
         {
@@ -189,42 +190,118 @@ void inserting(listOfVectors& mc, listOfVectors& pd, listOfVectors& mcc)
 
 
 
+void inserting(listOfVectors& mc, listOfVectors& pd , int ii)
+{
+    ii = 0;
+    (void)mc;
+    vector<int> tmpvec ;
+    tmpvec.push_back(99);
+    tmpvec.push_back(99);
+    pd.push_front(tmpvec);
+    listOfVectors::iterator it = pd.begin();
+    it++ ; // toskip the first element in the pd list
+    listOfVectors::iterator itt = pd.begin();
+    cout << "pend:" << endl;
+    print_list(pd);
+    cout << "main chain:" << endl;
+    print_list(mc);
+    listOfVectors::iterator it_pos;
+    listOfVectors::iterator lower;
+    int jackStart;
+    int jackEnd;
+    int added = 1;
+    cout << "mehdi boulhoujjat "<< endl;
+    for (size_t k = 1; k < pd.size(); k++)
+    {
+        jackStart = (std::pow(2, k + 1) + pow(-1, k)) / 3 - 1;
+        jackEnd = (std::pow(2, k ) + pow(-1, k-1)) / 3 ;
+        cout <<"jackStart: "<<  jackStart << endl;
+        cout <<"jackEnd: "<<  jackEnd << endl;
+        
+        for (; jackStart >= jackEnd; jackStart--)
+        {
+                cout << " ****" << pd.size() << " == "<< jackStart << endl;;
+            if(static_cast<size_t>(jackStart) < pd.size())
+            {
+                cout << "****" << pd.size() << " == "<< jackStart << endl;;
+                cout << endl;
+                //insertion here
+                itt = pd.begin();
+                iterator_increment(itt, pd, jackStart );
+                
+                // print_container(*itt);
+                // int tkkkk = tk;
+                listOfVectors::iterator it_end = mc.begin();
+                iterator_increment(it_end, mc, added + jackStart);
+                // print_container(*it_end);
+                lower = std::lower_bound(mc.begin(), it_end , *itt, customCompare);
+                // cout << "compairs :"<< count<< endl;
+                mc.insert(lower, *itt);
+                it++;
+                added ++;
+                if(it== pd.end())
+                    return ;
+            }
+        }
+        // exit(0) ;
+    }
+}
+
+void push_the_one(size_t position, size_t range_pos, listOfVectors& mc, listOfVectors& pd)
+{
+    cout << " position: ("<< position <<")"<< "  range_pos: ("<< range_pos<<")" << endl;
+    listOfVectors::iterator mc_range_stop = mc.begin();
+    listOfVectors::iterator item_to_push = pd.begin();
+
+    iterator_increment(mc_range_stop, mc, range_pos);
+    iterator_increment(item_to_push, pd, position);
+    // cout << " itemToPush: ";
+    // print_container(*item_to_push);
+    // cout << " position : ("<< position<< ")" << "mc.size(): ("<< mc.size()<< ")"<<endl;
+    listOfVectors::iterator lower = std::lower_bound(mc.begin(), mc_range_stop, *item_to_push, customCompare);
+    mc.insert(lower, *item_to_push);
+}
+
 void inserting(listOfVectors& mc, listOfVectors& pd)
 {
     (void)mc;
-    listOfVectors::iterator it = pd.begin();
-    listOfVectors::iterator itt = pd.begin();
-    // listOfVectors::iterator it_mc = mc.begin();
-    listOfVectors::iterator it_pos;
-    listOfVectors::iterator lower;
-    int tk;
-    int tk1;
-    int added = 1;
-    // cout << "mehdi boulhoujjat "<< endl;
-    for (size_t k = 2; k < pd.size(); k++)
+    vector<int> pushed;
+    int nb_of_added = 0;
+    // listOfVectors::iterator itToInsert;
+    listOfVectors::iterator itToCount = ++pd.begin();
+    // int nbofinserted;
+    // print_list(pd);
+    if(pd.size() == 1)
+        return ;
+    for (size_t i = 2; i < pd.size()+555; i ++)
     {
-        tk = (std::pow(2, k + 1) + pow(-1, k)) / 3;
-        tk1 = (std::pow(2, k ) + pow(-1, k-1)) / 3 + 1;
-        
-        for (; tk >= tk1; tk--)
+        int jacobStart = (std::pow(2, i) - std::pow(-1, i)) / 3; //(2^i - (-1)^i) /3 if i == 1 >> jack == 1
+        int jacobEnd   = (std::pow(2, i - 1) - std::pow(-1, i - 1))/3 + 1;
+        cout << "******start: "<< jacobStart << " end: " << jacobEnd<< endl;
+        for (; jacobStart >= jacobEnd; jacobStart--)
         {
-            //insertion here
-            it_pos = mc.begin();
-            iterator_increment(it_pos, mc, tk+added);
-            itt = pd.begin();
-            iterator_increment(itt, pd, tk-2);
-            cout << "****";
-            print_container(*itt);
-            // lower = std::lower_bound(mc.begin(), it_pos, *it, customCompare);
-            // mc.insert(lower, *it);
-            // print_container(*lower);
-            cout <<"tk: "<<  tk - 2 << endl;
-            it++;
-            added ++;
-            if(it== pd.end())
-                return ;
+            cout << "size: (" << pd.size() << ")  ";
+            if((size_t)jacobStart > pd.size())
+            {
+                cout << "skip" << endl;
+                continue;
+            }
+            cout << "start = ("<< jacobStart << ") end = (" << jacobEnd << ")" << endl;
+            pushed.push_back(jacobStart-1);
+            push_the_one(jacobStart-1, jacobStart + nb_of_added, mc, pd);
+            nb_of_added++;
+            if(++itToCount == pd.end())
+            {
+                cout << "pushed : ";
+                print_container(pushed);
+                return;
+            }
         }
+        cout << "------"<< endl;
     }
+    
+
+
 }
 
 
@@ -289,7 +366,7 @@ void sorting(vector<int>& lst)
         sorting(lst);
 
     cout << "S: "<< S<< " P: "<< P<< " N: " <<N << endl;
-    // print_container(remaining);
+    print_container(remaining);
     insertion(lst, P, N, remaining);
     cout << "----------------------------------------"<< count<<  endl;
     

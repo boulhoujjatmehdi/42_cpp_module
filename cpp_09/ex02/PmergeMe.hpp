@@ -6,7 +6,7 @@
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 10:51:33 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/11/28 18:15:15 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/11/30 15:39:36 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,14 @@ void print_container(const T& lst)
 template<typename T>
 void iterator_increment(typename T::iterator& it,const T& lst, int nb)
 {
+    // cout << " nb: " << nb << endl;
     while(nb--)
     {
         if(it != lst.end())
             it++;
     }
-    if(it == lst.end())
-        it--;
+    // if(it == lst.end())
+    //     it--;
 }
 
 template<typename T,typename P>
