@@ -6,7 +6,7 @@
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 10:53:25 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/12/01 12:57:49 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/12/01 15:30:21 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -276,7 +276,7 @@ void inserting(listOfVectors& mc, listOfVectors& pd)
     for (size_t i = 2; i < pd.size()+555; i ++)
     {
         int jacobStart = (std::pow(2, i) - std::pow(-1, i)) / 3; //(2^i - (-1)^i) /3 if i == 1 >> jack == 1
-        int jacobEnd   = (std::pow(2, i - 1) - std::pow(-1, i - 1))/3 + 1;
+        int jacobEnd   = (std::pow(2, i - 1) - std::pow(-1, i - 1))/3 + 1; // (2^(i - 1) - (-1)^ (i - 1)/ 3 + 1
         cout << "******start: "<< jacobStart << " end: " << jacobEnd<< endl;
         for (; jacobStart >= jacobEnd; jacobStart--)
         {
