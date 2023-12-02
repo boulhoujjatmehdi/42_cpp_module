@@ -6,7 +6,7 @@
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 10:51:08 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/12/01 13:02:29 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/12/02 10:23:06 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ int  checkIfSorted(const vector<int>& vec)
     return 0;
 }
 
+
+// void usingVectorContainer ()
+// {
+    
+// }
+
 int main(int ac, char** av)
 {
     if(ac == 1)
@@ -39,12 +45,12 @@ int main(int ac, char** av)
         fill_args_in_list(lst, av);
         copy_container(lst, vec);
         sorting(vec);
-        cout << "end"<<endl;
-        print_container(vec);
         if(checkIfSorted(vec))
             cout << "ERROR" << endl;
         else
-        cout <<  "ALL OK-_-";
+        {
+            
+        }
     }catch(int ext)
     {
         cout << "Error"<< endl;
