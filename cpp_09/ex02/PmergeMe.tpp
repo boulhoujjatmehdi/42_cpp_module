@@ -34,13 +34,13 @@ void printContainer(const T& lst)
 //prints to delete //TODO 
 void printPerPairs(const vectorOfPairs& vp)
 {
-    for (vectorOfPairs::const_iterator it = vp.cbegin(); it != vp.cend(); it++)
+    for (vectorOfPairs::const_iterator it = vp.begin(); it != vp.end(); it++)
     {
         cout << "[";
-        for(vector<int>::const_iterator itt = it->first.cbegin(); itt != it->first.cend(); itt++)
+        for(vector<int>::const_iterator itt = it->first.begin(); itt != it->first.end(); itt++)
             cout << *itt<<" ";
         cout << "|";
-        for(vector<int>::const_iterator itt = it->second.cbegin(); itt != it->second.cend(); itt++)
+        for(vector<int>::const_iterator itt = it->second.begin(); itt != it->second.end(); itt++)
             cout << *itt<< " ";
         cout << "]";
     }
@@ -103,11 +103,11 @@ void swap_pair(pairOfVecotrs& pv)
 void back_to_list(const vectorOfPairs& vp, vector<int>& lst)
 {
     lst.clear();
-    for (vectorOfPairs::const_iterator it = vp.cbegin(); it != vp.cend(); it++)
+    for (vectorOfPairs::const_iterator it = vp.begin(); it != vp.end(); it++)
     {
-        for(vector<int>::const_iterator itt = it->first.cbegin(); itt != it->first.cend(); itt++)
+        for(vector<int>::const_iterator itt = it->first.begin(); itt != it->first.end(); itt++)
             lst.push_back(*itt);
-        for(vector<int>::const_iterator itt = it->second.cbegin(); itt != it->second.cend(); itt++)
+        for(vector<int>::const_iterator itt = it->second.begin(); itt != it->second.end(); itt++)
             lst.push_back(*itt);
     }
 }
@@ -141,7 +141,7 @@ void merging(vector<int>& lst, int P, int N)
                 pv.first.push_back(*it);
             else
                 pv.second.push_back(*it);
-                it++;
+            it++;
         }
         swap_pair(pv);
         vp.push_back(pv);
@@ -248,10 +248,14 @@ void insertion(vector<int>&lst, int P, int N, vector<int>& remaining)
         for (int k = j; k < j + N; k++)
         {
             if(k < j + N /2)
+            {   
                 pv.first.push_back(*it);
+            }
             else
+            {
                 pv.second.push_back(*it);
-                it++;
+            }
+            it++;
         }
         vp.push_back(pv);
         pv.first.clear();
