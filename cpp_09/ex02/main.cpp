@@ -6,7 +6,7 @@
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 10:51:08 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/12/02 17:46:30 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/12/02 20:31:40 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int main(int ac, char** av)
             cout << "After:  ";
             printContainer(vec);
             cout << "comparisons: "<< count<< endl;//TODO:: REMOVE BEFORE PUSHING
-            cout << "Time to process a range of"<< vec.size()<< " elements with std::vector : "<< vecTime <<" us"<< endl;
+            cout << "Time to process a range of "<< vec.size()<< " elements with std::vector : "<< vecTime <<" us"<< endl;
         }
     }catch(int ext)
     {

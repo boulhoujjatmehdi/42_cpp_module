@@ -6,7 +6,7 @@
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 10:53:25 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/12/02 19:26:17 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/12/02 20:56:46 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,31 @@ void printContainer(const T& lst)
 }
 
 //prints to delete //TODO 
+void printPerPairs(const vectorOfPairs& vp)
+{
+    for (vectorOfPairs::const_iterator it = vp.begin(); it != vp.end(); it++)
+    {
+        cout << "[";
+        for(vector<int>::const_iterator itt = it->first.begin(); itt != it->first.end(); itt++)
+            cout << *itt<<" ";
+        cout << "|";
+        for(vector<int>::const_iterator itt = it->second.begin(); itt != it->second.end(); itt++)
+            cout << *itt<< " ";
+        cout << "]";
+    }
+    cout << endl;
+}
+void print_list(const listOfVectors& lst)
+{
+    listOfVectors::const_iterator it = lst.begin();
+    for (; it != lst.end(); it++)
+    {
+        cout << "list :";
+        printContainer(*it);
+    }
+}
+//printing
+
 template <typename T>
 void iterator_increment(typename T::iterator& it,const T& lst, int nb)
 {
@@ -79,11 +104,11 @@ template <typename T ,typename P>
 void back_to_list(const T& vp, P& lst)
 {
     lst.clear();
-    for (typename T::const_iterator it = vp.cbegin(); it != vp.cend(); it++)
+    for (vectorOfPairs::const_iterator it = vp.begin(); it != vp.end(); it++)
     {
-        for (typename T::value_type::first_type::const_iterator itt = it->first.cbegin(); itt != it->first.cend(); itt++)
+        for(vector<int>::const_iterator itt = it->first.begin(); itt != it->first.end(); itt++)
             lst.push_back(*itt);
-        for (typename T::value_type::second_type::const_iterator itt = it->second.cbegin(); itt != it->second.cend(); itt++)
+        for(vector<int>::const_iterator itt = it->second.begin(); itt != it->second.end(); itt++)
             lst.push_back(*itt);
     }
 }
@@ -116,7 +141,7 @@ void merging(vector<int>& lst, int P, int N)
                 pv.first.push_back(*it);
             else
                 pv.second.push_back(*it);
-                it++;
+            it++;
         }
         swap_pair(pv);
         vp.push_back(pv);
@@ -210,9 +235,12 @@ void inserting(vectorOfVectors& mc, vectorOfVectors& pd)
 
 void insertion(vector<int>&lst, int P, int N, vector<int>& remaining)
 {
-    vectorOfVectors mainChain;
-    vectorOfVectors pend;
-    vectorOfPairs vp;
+    // vectorOfVectors mainChain;
+    // vectorOfVectors pend;
+    vector<pair<vector<int>, vector<int> > > vp;
+    vector<vector<int> > mainChain;
+    vector<vector<int> > pend;
+    
     pairOfVecotrs pv;
     vector<int>::iterator it = lst.begin();
     for (int j = 0; j < P; j++)
@@ -220,10 +248,14 @@ void insertion(vector<int>&lst, int P, int N, vector<int>& remaining)
         for (int k = j; k < j + N; k++)
         {
             if(k < j + N /2)
+            {   
                 pv.first.push_back(*it);
+            }
             else
+            {
                 pv.second.push_back(*it);
-                it++;
+            }
+            it++;
         }
         vp.push_back(pv);
         pv.first.clear();
@@ -236,13 +268,16 @@ void insertion(vector<int>&lst, int P, int N, vector<int>& remaining)
     convertToVector(lst, mainChain);
 }
 
-void setRemaining(vector<int> lst,vector<int>& remaining, int P)
+template <typename T>
+void setRemaining(T lst,T& remaining, int P)
 {
     (void)remaining;
     int diff = lst.size() - P;
     if(diff)
     {
-        vector<int>::iterator it = std::next(lst.begin(), P);
+        typename T::iterator it = lst.begin();
+        iterator_increment(it,lst, P);
+        
         remaining.assign(it, lst.end());
     }
 }
