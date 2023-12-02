@@ -6,7 +6,7 @@
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 10:53:25 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/12/02 17:46:11 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/12/02 19:26:17 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,33 +32,8 @@ void printContainer(const T& lst)
 }
 
 //prints to delete //TODO 
-void printPerPairs(const vectorOfPairs& vp)
-{
-    for (vectorOfPairs::const_iterator it = vp.cbegin(); it != vp.cend(); it++)
-    {
-        cout << "[";
-        for(vector<int>::const_iterator itt = it->first.cbegin(); itt != it->first.cend(); itt++)
-            cout << *itt<<" ";
-        cout << "|";
-        for(vector<int>::const_iterator itt = it->second.cbegin(); itt != it->second.cend(); itt++)
-            cout << *itt<< " ";
-        cout << "]";
-    }
-    cout << endl;
-}
-void print_list(const listOfVectors& lst)
-{
-    listOfVectors::const_iterator it = lst.begin();
-    for (; it != lst.end(); it++)
-    {
-        cout << "list :";
-        printContainer(*it);
-    }
-}
-//printing
-
-
-void iterator_increment(vectorOfVectors::iterator& it,const vectorOfVectors& lst, int nb)
+template <typename T>
+void iterator_increment(typename T::iterator& it,const T& lst, int nb)
 {
     while(nb--)
     {
@@ -88,26 +63,27 @@ void fill_args_in_list(list<int>& lst, char** av)
     }
 }
 
-void swap_pair(pairOfVecotrs& pv)
+template <typename T>
+void swap_pair(pair<T,T>& pv)
 {
     if( ++count && pv.first.back() > pv.second.back())
     {
-        vector<int> tmp;
+        T tmp;
         tmp = pv.first;
         pv.first = pv.second;
         pv.second = tmp;
     }
 }
 
-
-void back_to_list(const vectorOfPairs& vp, vector<int>& lst)
+template <typename T ,typename P>
+void back_to_list(const T& vp, P& lst)
 {
     lst.clear();
-    for (vectorOfPairs::const_iterator it = vp.cbegin(); it != vp.cend(); it++)
+    for (typename T::const_iterator it = vp.cbegin(); it != vp.cend(); it++)
     {
-        for(vector<int>::const_iterator itt = it->first.cbegin(); itt != it->first.cend(); itt++)
+        for (typename T::value_type::first_type::const_iterator itt = it->first.cbegin(); itt != it->first.cend(); itt++)
             lst.push_back(*itt);
-        for(vector<int>::const_iterator itt = it->second.cbegin(); itt != it->second.cend(); itt++)
+        for (typename T::value_type::second_type::const_iterator itt = it->second.cbegin(); itt != it->second.cend(); itt++)
             lst.push_back(*itt);
     }
 }
@@ -122,7 +98,6 @@ void convertToVector(vector<int>& lst,const vectorOfVectors& mc)
         for(; it != cit->end(); it++)
             lst.push_back(*it);
     }
-    // print_container(lst);
     
 }
 
@@ -149,10 +124,7 @@ void merging(vector<int>& lst, int P, int N)
         pv.second.clear();
     }
     back_to_list(vp, lst);
-    
 }
-
-
 
 void mainChainPend(vectorOfVectors& mc, vectorOfVectors& pd, const vectorOfPairs& vp, vector<int>& remaining)
 {
