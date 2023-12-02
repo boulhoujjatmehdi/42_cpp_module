@@ -1,18 +1,72 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PmergeMe.cpp                                       :+:      :+:    :+:   */
+/*   PmergeMe.tpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 10:53:25 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/12/02 10:18:53 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/12/02 17:46:11 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-int count = 0;
+extern int count;
+
+
+
+
+//printing 
+template <typename T>
+void printContainer(const T& lst)
+{
+    typename T::const_iterator it;
+    it = lst.begin();
+    while(it != lst.end())
+    {
+        cout << *it << " ";
+        it ++;
+    }
+    cout << endl;
+}
+
+//prints to delete //TODO 
+void printPerPairs(const vectorOfPairs& vp)
+{
+    for (vectorOfPairs::const_iterator it = vp.cbegin(); it != vp.cend(); it++)
+    {
+        cout << "[";
+        for(vector<int>::const_iterator itt = it->first.cbegin(); itt != it->first.cend(); itt++)
+            cout << *itt<<" ";
+        cout << "|";
+        for(vector<int>::const_iterator itt = it->second.cbegin(); itt != it->second.cend(); itt++)
+            cout << *itt<< " ";
+        cout << "]";
+    }
+    cout << endl;
+}
+void print_list(const listOfVectors& lst)
+{
+    listOfVectors::const_iterator it = lst.begin();
+    for (; it != lst.end(); it++)
+    {
+        cout << "list :";
+        printContainer(*it);
+    }
+}
+//printing
+
+
+void iterator_increment(vectorOfVectors::iterator& it,const vectorOfVectors& lst, int nb)
+{
+    while(nb--)
+    {
+        if(it != lst.end())
+            it++;
+    }
+}
+
 
 int check_if_valid_number(char *number)
 {
@@ -58,10 +112,10 @@ void back_to_list(const vectorOfPairs& vp, vector<int>& lst)
     }
 }
 
-void convertToVector(vector<int>& lst,const listOfVectors& mc)
+void convertToVector(vector<int>& lst,const vectorOfVectors& mc)
 {
     lst.clear();
-    listOfVectors::const_iterator cit = mc.begin();
+    vectorOfVectors::const_iterator cit = mc.begin();
     for (; cit != mc.end(); cit++)
     {
         vector<int>::const_iterator it = cit->begin();
@@ -72,30 +126,7 @@ void convertToVector(vector<int>& lst,const listOfVectors& mc)
     
 }
 
-//prints to delete //TODO 
-void printPerPairs(const vectorOfPairs& vp)
-{
-    for (vectorOfPairs::const_iterator it = vp.cbegin(); it != vp.cend(); it++)
-    {
-        cout << "[";
-        for(vector<int>::const_iterator itt = it->first.cbegin(); itt != it->first.cend(); itt++)
-            cout << *itt<<" ";
-        cout << "|";
-        for(vector<int>::const_iterator itt = it->second.cbegin(); itt != it->second.cend(); itt++)
-            cout << *itt<< " ";
-        cout << "]";
-    }
-    cout << endl;
-}
-void print_list(const listOfVectors& lst)
-{
-    listOfVectors::const_iterator it = lst.begin();
-    for (; it != lst.end(); it++)
-    {
-        cout << "list :";
-        print_container(*it);
-    }
-}
+
 
 void merging(vector<int>& lst, int P, int N)
 {
@@ -123,7 +154,7 @@ void merging(vector<int>& lst, int P, int N)
 
 
 
-void mainChainPend(listOfVectors& mc, listOfVectors& pd, listOfVectors& mcc , const vectorOfPairs& vp, vector<int>& remaining)
+void mainChainPend(vectorOfVectors& mc, vectorOfVectors& pd, const vectorOfPairs& vp, vector<int>& remaining)
 {
     vectorOfPairs::const_iterator it = vp.begin();
     for (;it != vp.end(); it++)
@@ -139,7 +170,6 @@ void mainChainPend(listOfVectors& mc, listOfVectors& pd, listOfVectors& mcc , co
             pd.push_back(it->first);
             mc.push_back(it->second);
         }
-        mcc.push_back(it->second);
     }
     if(!remaining.empty())
         pd.push_back(remaining);
@@ -153,24 +183,23 @@ bool customCompare(vector<int> v1, vector<int> v2)
     return false;
 }
 
-void push_the_one(size_t position, size_t range_pos, listOfVectors& mc, listOfVectors& pd)
+void push_the_one(size_t position, size_t range_pos, vectorOfVectors& mc, vectorOfVectors& pd)
 {
-    listOfVectors::iterator mc_range_stop = mc.begin();
-    listOfVectors::iterator item_to_push = pd.begin();
+    vectorOfVectors::iterator mc_range_stop = mc.begin();
+    vectorOfVectors::iterator item_to_push = pd.begin();
 
     iterator_increment(mc_range_stop, mc, range_pos);
     iterator_increment(item_to_push, pd, position);
-    listOfVectors::iterator lower = std::lower_bound(mc.begin(), mc_range_stop, *item_to_push, customCompare);
+    vectorOfVectors::iterator lower = std::lower_bound(mc.begin(), mc_range_stop, *item_to_push, customCompare);
     mc.insert(lower, *item_to_push);
 }
 
-void inserting(listOfVectors& mc, listOfVectors& pd)
+void inserting(vectorOfVectors& mc, vectorOfVectors& pd)
 {
     (void)mc;
     vector<int> pushed;
     int nb_of_added = 0;
-    // listOfVectors::iterator itToInsert;
-    listOfVectors::iterator itToCount = ++pd.begin();
+    vectorOfVectors::iterator itToCount = ++pd.begin();
     // int nbofinserted;
     // print_list(pd);
     if(pd.size() == 1)
@@ -209,9 +238,8 @@ void inserting(listOfVectors& mc, listOfVectors& pd)
 
 void insertion(vector<int>&lst, int P, int N, vector<int>& remaining)
 {
-    listOfVectors mainChain;
-    listOfVectors mcCompair;
-    listOfVectors pend;
+    vectorOfVectors mainChain;
+    vectorOfVectors pend;
     vectorOfPairs vp;
     pairOfVecotrs pv;
     vector<int>::iterator it = lst.begin();
@@ -229,10 +257,7 @@ void insertion(vector<int>&lst, int P, int N, vector<int>& remaining)
         pv.first.clear();
         pv.second.clear();
     }
-    // printPerPairs(vp);
-    mainChainPend(mainChain, pend, mcCompair, vp, remaining);
-    
-    // inserting(mainChain, pend, mcCompair);
+    mainChainPend(mainChain, pend, vp, remaining);
     inserting(mainChain, pend);
     pend.clear();
     
@@ -245,10 +270,8 @@ void setRemaining(vector<int> lst,vector<int>& remaining, int P)
     int diff = lst.size() - P;
     if(diff)
     {
-        
         vector<int>::iterator it = std::next(lst.begin(), P);
         remaining.assign(it, lst.end());
-        
     }
 }
 
@@ -260,16 +283,11 @@ void sorting(vector<int>& lst)
     int S = lst.size()/2 * 2;
     int P = S / std::pow(2, i);
     int N = std::pow(2, i);
-    // cout << "S: "<< S<< " P: "<< P<< " N: " <<N << endl;
     setRemaining(lst, remaining, N*P);
     merging(lst, P, N);
     i++;
     if(P > 1)
         sorting(lst);
-
-    // cout << "S: "<< S<< " P: "<< P<< " N: " <<N << endl;
-    // print_container(remaining);
     insertion(lst, P, N, remaining);
-    // cout << "----------------------------------------"<< count<<  endl;
     
 }
