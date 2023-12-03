@@ -6,7 +6,7 @@
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 10:51:33 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/12/02 17:45:54 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/12/03 11:22:12 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,14 @@ using std::pair;
 
 typedef pair<vector<int>, vector<int> > pairOfVecotrs; 
 typedef vector<pairOfVecotrs> vectorOfPairs;
-typedef list<vector<int> > listOfVectors;
 typedef vector<vector<int > > vectorOfVectors;
 
-void fill_args_in_list(list<int>& lst, char** av);
-void sorting(vector<int>& lst);
-void print_list(const listOfVectors& lst);
+typedef pair<list<int>, list<int> > pairOfLists; 
+typedef list<pairOfLists> listOfPairs;
+typedef list<list<int > > listOfLists;
+
+void sortingVector(vector<int>& lst);
+void sortingList(list<int>& lst);
 
 
 
@@ -40,19 +42,13 @@ void print_list(const listOfVectors& lst);
 template<typename T>
 void printContainer(const T& lst);
 
-
+template <typename T>
+void fillArgsInContainer(T& lst, char** av);
 
 
 
 
 template<typename T,typename P>
-void copy_container(const T& src, P& dst)
-{
-    typename T::const_iterator src_it;
-    for (src_it = src.begin(); src_it != src.end(); src_it++)
-    {
-        dst.push_back(*src_it);
-    }
-}
+void copy_container(const T& src, P& dst);
 
 #include "PmergeMe.tpp"

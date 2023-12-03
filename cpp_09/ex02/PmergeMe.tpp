@@ -6,7 +6,7 @@
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 10:53:25 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/12/02 20:56:46 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/12/03 11:44:23 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,31 +30,6 @@ void printContainer(const T& lst)
     }
     cout << endl;
 }
-
-//prints to delete //TODO 
-void printPerPairs(const vectorOfPairs& vp)
-{
-    for (vectorOfPairs::const_iterator it = vp.begin(); it != vp.end(); it++)
-    {
-        cout << "[";
-        for(vector<int>::const_iterator itt = it->first.begin(); itt != it->first.end(); itt++)
-            cout << *itt<<" ";
-        cout << "|";
-        for(vector<int>::const_iterator itt = it->second.begin(); itt != it->second.end(); itt++)
-            cout << *itt<< " ";
-        cout << "]";
-    }
-    cout << endl;
-}
-void print_list(const listOfVectors& lst)
-{
-    listOfVectors::const_iterator it = lst.begin();
-    for (; it != lst.end(); it++)
-    {
-        cout << "list :";
-        printContainer(*it);
-    }
-}
 //printing
 
 template <typename T>
@@ -67,19 +42,28 @@ void iterator_increment(typename T::iterator& it,const T& lst, int nb)
     }
 }
 
+template<typename T,typename P>
+void copy_container(const T& src, P& dst)
+{
+    typename T::const_iterator src_it;
+    for (src_it = src.begin(); src_it != src.end(); src_it++)
+    {
+        dst.push_back(*src_it);
+    }
+}
 
 int check_if_valid_number(char *number)
 {
     char *remaining;
     int pure_int = strtol(number, &remaining, 10 );
-    if(*remaining)
+    if(*remaining || pure_int < 0)
         throw 1;
     return pure_int;
 }
 
-void fill_args_in_list(list<int>& lst, char** av)
+template <typename T>
+void fillArgsInContainer(T& lst, char** av)
 {
-    (void)lst;
     av++;
     while(*av)
     {
@@ -104,22 +88,22 @@ template <typename T ,typename P>
 void back_to_list(const T& vp, P& lst)
 {
     lst.clear();
-    for (vectorOfPairs::const_iterator it = vp.begin(); it != vp.end(); it++)
+    for (typename T::const_iterator it = vp.begin(); it != vp.end(); it++)
     {
-        for(vector<int>::const_iterator itt = it->first.begin(); itt != it->first.end(); itt++)
+        for(typename P::const_iterator itt = it->first.begin(); itt != it->first.end(); itt++)
             lst.push_back(*itt);
-        for(vector<int>::const_iterator itt = it->second.begin(); itt != it->second.end(); itt++)
+        for(typename P::const_iterator itt = it->second.begin(); itt != it->second.end(); itt++)
             lst.push_back(*itt);
     }
 }
-
-void convertToVector(vector<int>& lst,const vectorOfVectors& mc)
+template <typename T , typename P>
+void convertToVector(T& lst,const P& mc)
 {
     lst.clear();
-    vectorOfVectors::const_iterator cit = mc.begin();
+    typename P::const_iterator cit = mc.begin();
     for (; cit != mc.end(); cit++)
     {
-        vector<int>::const_iterator it = cit->begin();
+        typename T::const_iterator it = cit->begin();
         for(; it != cit->end(); it++)
             lst.push_back(*it);
     }
@@ -151,9 +135,33 @@ void merging(vector<int>& lst, int P, int N)
     back_to_list(vp, lst);
 }
 
-void mainChainPend(vectorOfVectors& mc, vectorOfVectors& pd, const vectorOfPairs& vp, vector<int>& remaining)
+void merging(list<int>& lst, int P, int N)
 {
-    vectorOfPairs::const_iterator it = vp.begin();
+    list<int>::iterator it = lst.begin();
+    listOfPairs vp;
+    pairOfLists pv;
+    for (int j = 0; j < P; j++)
+    {
+        for (int k = j; k < j + N; k++)
+        {
+            if(k < j + N /2)
+                pv.first.push_back(*it);
+            else
+                pv.second.push_back(*it);
+            it++;
+        }
+        swap_pair(pv);
+        vp.push_back(pv);
+        pv.first.clear();
+        pv.second.clear();
+    }
+    back_to_list(vp, lst);
+}
+
+template <typename T, typename P, typename D>
+void mainChainPend(T& mc, T& pd, const P& vp, D& remaining)
+{
+    typename P::const_iterator it = vp.begin();
     for (;it != vp.end(); it++)
     {
         if(it == vp.begin())
@@ -172,7 +180,15 @@ void mainChainPend(vectorOfVectors& mc, vectorOfVectors& pd, const vectorOfPairs
         pd.push_back(remaining);
 }
 
-bool customCompare(vector<int> v1, vector<int> v2)
+
+bool customCompareV(const vector<int>& v1, const vector<int>& v2)
+{
+    count ++;
+    if(v1.back() < v2.back())
+        return true;
+    return false;
+}
+bool customCompareL(const list<int>& v1, const list<int>& v2)
 {
     count ++;
     if(v1.back() < v2.back())
@@ -187,61 +203,80 @@ void push_the_one(size_t position, size_t range_pos, vectorOfVectors& mc, vector
 
     iterator_increment(mc_range_stop, mc, range_pos);
     iterator_increment(item_to_push, pd, position);
-    vectorOfVectors::iterator lower = std::lower_bound(mc.begin(), mc_range_stop, *item_to_push, customCompare);
+    vectorOfVectors::iterator lower = std::lower_bound(mc.begin(), mc_range_stop, *item_to_push, customCompareV);
     mc.insert(lower, *item_to_push);
 }
 
-void inserting(vectorOfVectors& mc, vectorOfVectors& pd)
+void push_the_one(size_t position, size_t range_pos, listOfLists& mc, listOfLists& pd)
+{
+    listOfLists::iterator mc_range_stop = mc.begin();
+    listOfLists::iterator item_to_push = pd.begin();
+
+    iterator_increment(mc_range_stop, mc, range_pos);
+    iterator_increment(item_to_push, pd, position);
+    listOfLists::iterator lower = std::lower_bound(mc.begin(), mc_range_stop, *item_to_push, customCompareL);
+    mc.insert(lower, *item_to_push);
+}
+
+
+void jacobsthall_inserting(vectorOfVectors& mc, vectorOfVectors& pd)
 {
     (void)mc;
     vector<int> pushed;
-    int nb_of_added = 0;
-    vectorOfVectors::iterator itToCount = ++pd.begin();
-    // int nbofinserted;
-    // print_list(pd);
+    size_t nb_of_added = 0;
     if(pd.size() == 1)
         return ;
     for (size_t i = 2; i < pd.size()+555; i ++)
     {
         int jacobStart = (std::pow(2, i) - std::pow(-1, i)) / 3; //(2^i - (-1)^i) /3 if i == 1 >> jack == 1
         int jacobEnd   = (std::pow(2, i - 1) - std::pow(-1, i - 1))/3 + 1; // (2^(i - 1) - (-1)^ (i - 1)/ 3 + 1
-        // cout << "******start: "<< jacobStart << " end: " << jacobEnd<< endl;
         for (; jacobStart >= jacobEnd; jacobStart--)
         {
-            // cout << "size: (" << pd.size() << ")  ";
             if((size_t)jacobStart > pd.size())
-            {
-                // cout << "skip" << endl;
                 continue;
-            }
-            // cout << "start = ("<< jacobStart << ") end = (" << jacobEnd << ")" << endl;
             pushed.push_back(jacobStart-1);
             push_the_one(jacobStart-1, jacobStart + nb_of_added, mc, pd);
             nb_of_added++;
-            if(++itToCount == pd.end())
-            {
-                // cout << "pushed : ";
-                // print_container(pushed);
+            if(nb_of_added +1 >= pd.size())
                 return;
-            }
+            
         }
-        // cout << "------"<< endl;
     }
-    
+}
 
-
+void jacobsthall_inserting(listOfLists& mc, listOfLists& pd)
+{
+    (void)mc;
+    vector<int> pushed;
+    size_t nb_of_added = 0;
+    if(pd.size() == 1)
+        return ;
+    for (size_t i = 2; i < pd.size()+555; i ++)
+    {
+        int jacobStart = (std::pow(2, i) - std::pow(-1, i)) / 3; //(2^i - (-1)^i) /3 if i == 1 >> jack == 1
+        int jacobEnd   = (std::pow(2, i - 1) - std::pow(-1, i - 1))/3 + 1; // (2^(i - 1) - (-1)^ (i - 1)/ 3 + 1
+        for (; jacobStart >= jacobEnd; jacobStart--)
+        {
+            if((size_t)jacobStart > pd.size())
+                continue;
+            pushed.push_back(jacobStart-1);
+            push_the_one(jacobStart-1, jacobStart + nb_of_added, mc, pd);
+            nb_of_added++;
+            if(nb_of_added +1 >= pd.size())
+                return;
+            
+        }
+    }
 }
 
 
 void insertion(vector<int>&lst, int P, int N, vector<int>& remaining)
 {
-    // vectorOfVectors mainChain;
-    // vectorOfVectors pend;
-    vector<pair<vector<int>, vector<int> > > vp;
-    vector<vector<int> > mainChain;
-    vector<vector<int> > pend;
-    
+    vectorOfPairs vp;
+    vectorOfVectors mainChain;
+    vectorOfVectors pend;
     pairOfVecotrs pv;
+    
     vector<int>::iterator it = lst.begin();
     for (int j = 0; j < P; j++)
     {
@@ -262,7 +297,41 @@ void insertion(vector<int>&lst, int P, int N, vector<int>& remaining)
         pv.second.clear();
     }
     mainChainPend(mainChain, pend, vp, remaining);
-    inserting(mainChain, pend);
+    jacobsthall_inserting(mainChain, pend);
+    pend.clear();
+    
+    convertToVector(lst, mainChain);
+}
+
+void insertion(list<int>&lst, int P, int N, list<int>& remaining)
+{
+    // vector<pair<vector<int>, vector<int> > > vp;
+    listOfPairs vp;
+    listOfLists mainChain;
+    listOfLists pend;
+    pairOfLists pv;
+    
+    list<int>::iterator it = lst.begin();
+    for (int j = 0; j < P; j++)
+    {
+        for (int k = j; k < j + N; k++)
+        {
+            if(k < j + N /2)
+            {   
+                pv.first.push_back(*it);
+            }
+            else
+            {
+                pv.second.push_back(*it);
+            }
+            it++;
+        }
+        vp.push_back(pv);
+        pv.first.clear();
+        pv.second.clear();
+    }
+    mainChainPend(mainChain, pend, vp, remaining);
+    jacobsthall_inserting(mainChain, pend);
     pend.clear();
     
     convertToVector(lst, mainChain);
@@ -282,8 +351,7 @@ void setRemaining(T lst,T& remaining, int P)
     }
 }
 
-
-void sorting(vector<int>& lst)
+void sortingVector(vector<int>& lst)
 {
     static int i = 1;
     vector<int> remaining;
@@ -294,7 +362,21 @@ void sorting(vector<int>& lst)
     merging(lst, P, N);
     i++;
     if(P > 1)
-        sorting(lst);
+        sortingVector(lst);
     insertion(lst, P, N, remaining);
-    
+}
+
+void sortingList(list<int>& lst)
+{
+    static int i = 1;
+    list<int> remaining;
+    int S = lst.size()/2 * 2;
+    int P = S / std::pow(2, i);
+    int N = std::pow(2, i);
+    setRemaining(lst, remaining, N*P);
+    merging(lst, P, N);
+    i++;
+    if(P > 1)
+        sortingList(lst);
+    insertion(lst, P, N, remaining);
 }

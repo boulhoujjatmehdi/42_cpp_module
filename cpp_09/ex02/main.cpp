@@ -6,7 +6,7 @@
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 10:51:08 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/12/02 20:31:40 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/12/03 11:38:30 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 #include "PmergeMe.hpp"
 int count = 0;
-int  checkIfSorted(const vector<int>& vec)
+
+template <typename T>
+int  checkIfSorted(const T& vec)
 {
-    vector<int>::const_iterator it = vec.begin();
+    typename T::const_iterator it = vec.begin();
     int last = *it;
     it++;
     for (; it  != vec.end(); it++)
@@ -32,7 +34,16 @@ int  checkIfSorted(const vector<int>& vec)
 double usingVectorContainer (vector<int>& vec)
 {
     clock_t start = clock();
-    sorting(vec);
+    sortingVector(vec);
+    clock_t end = clock();
+    double ticks = static_cast<double>(end - start);
+    return ticks;
+}
+
+double usingListContainer (list<int>& vec)
+{
+    clock_t start = clock();
+    sortingList(vec);
     clock_t end = clock();
     double ticks = static_cast<double>(end - start);
     return ticks;
@@ -42,30 +53,38 @@ double usingVectorContainer (vector<int>& vec)
 
 int main(int ac, char** av)
 {
-    if(ac == 1)
-        return 1;
-    list<int> lst;
-    vector<int> vec;
-    try
+    if(ac > 2)
     {
-        fill_args_in_list(lst, av);
-        copy_container(lst, vec);
-        double vecTime = usingVectorContainer(vec);
-        if(checkIfSorted(vec))
-            cout << "ERROR" << endl;//TODO: REMOVE BEFORE PUSHING
-        else
+        list<int> lst;
+        vector<int> vec;
+        list <int> beforeList;
+        vector <int> beforeVector;
+        try
         {
-            cout << "Before: ";
-            printContainer(lst);
-            cout << "After:  ";
-            printContainer(vec);
-            cout << "comparisons: "<< count<< endl;//TODO:: REMOVE BEFORE PUSHING
-            cout << "Time to process a range of "<< vec.size()<< " elements with std::vector : "<< vecTime <<" us"<< endl;
+            fillArgsInContainer(beforeList, av);
+            fillArgsInContainer(beforeVector, av);
+            vec = beforeVector;
+            lst = beforeList;
+            double vecTime = usingVectorContainer(vec);
+            double lstTime = usingListContainer(lst);
+            count /= 2;
+                cout << "Before: ";
+                printContainer(beforeVector);
+                cout << "After:  ";
+                printContainer(vec);
+                // cout << "comparisons: "<< count<< endl;//TODO:: REMOVE BEFORE PUSHING
+                cout << "Time to process a range of "<< vec.size()<< " elements with std::vector : "<< vecTime <<" us"<< endl;
+                cout << "Time to process a range of "<< vec.size()<< " elements with std::vector : "<< lstTime <<" us"<< endl;
+        }catch(int ext)
+        {
+            cout << "Error"<< endl;
+            
+            exit(ext);
         }
-    }catch(int ext)
+    }
+    else
     {
-        cout << "Error"<< endl;
-        
-        exit(ext);
+        cout << "Enter at least two numbers!!"<< endl;
+        return 0;
     }
 }
