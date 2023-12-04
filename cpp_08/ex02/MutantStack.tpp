@@ -6,7 +6,7 @@
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 19:55:09 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/11/22 20:10:45 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/12/04 11:48:06 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ MutantStack<T>::MutantStack(const MutantStack<T>& obj)
 template<typename T>
 MutantStack<T>& MutantStack<T>::operator=(const MutantStack<T>& obj)
 {
-    (void)obj;
+    this->c = obj.c;
     return *this;
 }

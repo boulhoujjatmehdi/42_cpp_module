@@ -6,7 +6,7 @@
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 19:31:49 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/11/23 09:40:31 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/12/04 12:38:19 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,15 @@ class MutantStack: public std::stack<T>
         virtual ~MutantStack();
         MutantStack & operator=(MutantStack const & rhs);
     //orthodox
-    typedef typename std::stack<T>::container_type::iterator iterator;
+    typedef typename std::stack<T>::container_type::reverse_iterator iterator;
 
     iterator begin()
     {
-        return this->c.begin();
+        return this->c.rbegin();
     }
     iterator end()
     {
-        return this->c.end();
+        return this->c.rend();
     }
 
 };

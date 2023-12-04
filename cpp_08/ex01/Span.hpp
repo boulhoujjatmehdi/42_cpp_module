@@ -6,7 +6,7 @@
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 10:16:10 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/11/22 16:17:19 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/12/04 11:18:44 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ public:
     size_t shortestSpan();
     size_t longestSpan();
 
-    void randomRange(int nb);
+    void randomRange(int nb);//my function
     template<typename T>
     void addRange(T from, T to);
     

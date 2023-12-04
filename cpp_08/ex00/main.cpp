@@ -6,7 +6,7 @@
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 14:58:21 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/11/22 16:53:39 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/12/04 10:16:04 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ int main()
     {
         v.push_back(i);
     }
-    cout << easyfind(v, 10)<< endl;
+    cout << easyfind(v, 2)<< endl;
 }
