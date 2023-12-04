@@ -6,7 +6,7 @@
 /*   By: eboulhou <eboulhou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 10:16:10 by eboulhou          #+#    #+#             */
-/*   Updated: 2023/12/04 11:18:44 by eboulhou         ###   ########.fr       */
+/*   Updated: 2023/12/04 13:06:17 by eboulhou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ template<typename T>
 void Span::addRange(T from, T to)
 {
     // typename T::iterator it;
+    if(std::distance(from, to)+_span.size() > _N)
+        throw "not enaugh space!";
     while (from != to)
     {
         this->_span.push_back(*from);
